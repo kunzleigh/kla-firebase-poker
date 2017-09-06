@@ -5,6 +5,12 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { RoomComponent } from './room/room.component';
+import { AppRoutingModule } from './app.routing.module';
+import { HeaderComponent } from './header/header.component';
+import { CreateRoomComponent } from './create-room/create-room.component';
+import { HomeComponent } from './home/home.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -17,9 +23,15 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RoomComponent,
+    HeaderComponent,
+    CreateRoomComponent,
+    HomeComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
