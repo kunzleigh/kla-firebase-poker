@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {AuthGuardService} from './service/auth-guard.service';
 import {LoginComponent} from './login/login.component';
+import {AuthService} from './service/auth.service';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -17,6 +18,8 @@ const appRoutes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: []
+  providers: [
+    AuthService
+  ]
 })
 export class AppRoutingModule { }
