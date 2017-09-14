@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './header/header.component';
 import { CreateRoomComponent } from './create-room/create-room.component';
 import { HomeComponent } from './home/home.component';
+import {TicketListComponent} from './ticket-list/ticket-list.component';
+import {TicketService} from "./service/ticket.service";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -28,7 +30,8 @@ const firebaseConfig = {
     RoomComponent,
     HeaderComponent,
     CreateRoomComponent,
-    HomeComponent
+    HomeComponent,
+    TicketListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -37,7 +40,7 @@ const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [TicketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
