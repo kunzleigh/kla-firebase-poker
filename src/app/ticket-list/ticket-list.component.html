@@ -1,0 +1,32 @@
+<!-- Title (page should require auth)-->
+<div class="page-header">
+  <h1>Ticket List View <small>Show a list of the tickets that need estimated.</small></h1>
+</div>
+
+<!-- Add (scrum master only) -->
+<div class="row" *ngIf="isScrumMaster">
+  <div class="col-sm-6">
+    <!-- TODO moving add ticket to another page -->
+    <button class="btn btn-lg btn-success">
+      Add Ticket
+    </button>
+  </div>
+</div>
+
+<!-- List (all can view) -->
+<div class="row" *ngFor="let t of ticketService.getTicketList(); let i = index">
+  <div class="col-sm-3">
+    {{ t.title }}
+  </div>
+  <div class="col-sm-7">
+    {{ t.description }}
+  </div>
+  <!-- TODO scrum master present in ticket indicator -->
+  <div class="col-sm-1">
+    <span *ngIf="isScrumMasterPresent" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+  </div>
+  <!-- TODO current votes whatever number -->
+  <div class="col-sm-1">
+    <span class="badge">{{ t.votes?.length || 0 }}</span>
+  </div>
+</div>
