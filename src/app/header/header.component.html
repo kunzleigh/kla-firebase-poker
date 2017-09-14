@@ -1,3 +1,24 @@
-<p>
-  header works!
-</p>
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- TODO update this to have the KLA logo or a logo for KLA Scrum Poker (does Cody Hinze have time to make something quick?) -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="home">Brand</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- TODO should probably hide this if not auth -->
+        <li><a routerLink="tickets">Tickets</a></li>
+        <!-- TODO update this to be dynamic based on the Auth Service -->
+        <li><a routerLink="login">Login</a></li>
+        <!-- TODO toggle based on auth with Login -->
+        <li *ngIf="false"><a routerLink="logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
