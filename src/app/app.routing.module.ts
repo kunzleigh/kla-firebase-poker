@@ -9,8 +9,8 @@ import {TicketListComponent} from "./ticket-list/ticket-list.component";
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent, canLoad: [AuthGuardService]},
-  {path: 'tickets', component: TicketListComponent, canLoad: [AuthGuardService]}
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
+  {path: 'tickets', component: TicketListComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
@@ -21,7 +21,8 @@ const appRoutes: Routes = [
     RouterModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService
   ]
 })
 export class AppRoutingModule { }

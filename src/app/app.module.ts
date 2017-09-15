@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import {AngularFireAuthModule, AUTH_PROVIDERS} from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +13,7 @@ import { CreateRoomComponent } from './create-room/create-room.component';
 import { HomeComponent } from './home/home.component';
 import {TicketListComponent} from './ticket-list/ticket-list.component';
 import {TicketService} from "./service/ticket.service";
+import {AuthService} from './service/auth.service';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',

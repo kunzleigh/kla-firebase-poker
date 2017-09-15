@@ -1,0 +1,15 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    
+    "rooms": {
+      "$room_id": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid == data.child('$uid').val()",
+//           comments work? only allow access to room if auth id matches room child uid
+        "$uid": {}
+      }
+    }
+  }
+}
