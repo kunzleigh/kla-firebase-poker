@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  userAuthenticated = false;
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.userAuthenticated = this.authService.isAuthenticated();
+    this.authService.getAuthStateObservable().subscribe((auth) => {
+      this.userAuthenticated = auth != null;
+    });
   }
 
+  onLogout() {
+    this.authService.logout();
+  }
 }

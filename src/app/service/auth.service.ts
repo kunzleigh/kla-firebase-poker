@@ -2,16 +2,18 @@ import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
 
-  private userAuthenticated = false;
-  user: Observable<firebase.User>;
+  private authState: firebase.User = null;
 
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
-    this.user = this.angularFireAuth.authState;
+    this.angularFireAuth.authState.subscribe((auth) => {
+      console.log('auth changed!');
+      console.log(auth);
+      this.authState = auth;
+    });
   }
 
   loginWithGoogle() {
@@ -19,6 +21,7 @@ export class AuthService {
       .auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(u => {
+        console.log('logged in!');
         this.router.navigate(['/home']);
       })
       .catch(e => {
@@ -29,10 +32,13 @@ export class AuthService {
   logout() {
     this.angularFireAuth.auth.signOut();
     this.router.navigate(['/login']);
-
   }
 
   isAuthenticated() {
-    return this.userAuthenticated;
+    return this.authState != null;
+  }
+
+  getAuthStateObservable() {
+    return this.angularFireAuth.authState;
   }
 }
