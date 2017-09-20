@@ -1,29 +1,37 @@
 import { Injectable } from '@angular/core';
+import {Ticket} from "../class/ticket";
+import {Vote} from "../class/vote";
 
 @Injectable()
 export class TicketService {
-  //TODO add "Ticket" type as interface
-  private _ticketList: Array<{}> = [];
+
+  private _ticketList: Ticket[] = [];
 
   constructor() {
-    //TODO cast all to "Ticket" type
-    this._ticketList.push(
-      {
-        id: 1, title: 'Ticket 1', description: 'Just a plain old description',
-        votes: [{$uid: '1', rank: '1'}, {$uid: '2', rank: '5'}, {$uid: '3', rank: '2'}]
-      },
-      {
-        id: 2, title: 'Ticket 2', description: 'Just a plane old description',
-        votes: []
-      },
-      {
-        id: 3, title: 'Ticket 3', description: 'Just a plain ol\' description',
-        votes: [{$uid: '3', rank: '3'}]
-      }
-    );
+    const ticket0 = new Ticket();
+    ticket0.$id = '0';
+    ticket0.title = 'Ticket 0';
+    ticket0.description = 'Just a plain old description';
+    ticket0.votes = [new Vote(), new Vote()];
+    ticket0.created = "Two days ago";
+
+    const ticket1 = new Ticket();
+    ticket1.$id = '1';
+    ticket1.title = 'Ticket 1';
+    ticket1.description = 'Not much of a better description';
+    ticket1.votes = [new Vote(), new Vote()];
+    ticket1.created = "One day ago";
+
+    const ticket2 = new Ticket();
+    ticket2.$id = '2';
+    ticket2.title = 'Ticket 1';
+    ticket2.description = 'Still working on the description';
+    ticket2.votes = [new Vote(), new Vote()];
+    ticket2.created = "A few hours ago";
+    this._ticketList.push(ticket0, ticket1, ticket2);
   }
 
-  getTicketList(): Array<{}> {
+  getTicketList(): Ticket[] {
     return this._ticketList;
   }
 
