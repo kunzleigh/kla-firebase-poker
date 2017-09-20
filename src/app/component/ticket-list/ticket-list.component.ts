@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {TicketService} from '../service/ticket.service';
+import {TicketService} from '../../service/ticket.service';
 
 @Component({
   selector: 'app-ticket-list',

@@ -5,13 +5,13 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {AngularFireAuthModule, AUTH_PROVIDERS} from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RoomComponent } from './room/room.component';
+import { LoginComponent } from './component/login/login.component';
+import { RoomComponent } from './component/room/room.component';
 import { AppRoutingModule } from './app.routing.module';
-import { HeaderComponent } from './header/header.component';
-import { CreateRoomComponent } from './create-room/create-room.component';
-import { HomeComponent } from './home/home.component';
-import {TicketListComponent} from './ticket-list/ticket-list.component';
+import { HeaderComponent } from './component/header/header.component';
+import { CreateRoomComponent } from './component/create-room/create-room.component';
+import { HomeComponent } from './component/home/home.component';
+import {TicketListComponent} from './component/ticket-list/ticket-list.component';
 import {TicketService} from "./service/ticket.service";
 import {AuthService} from './service/auth.service';
 
