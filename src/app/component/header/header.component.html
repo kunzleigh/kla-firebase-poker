@@ -12,9 +12,13 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li *ngIf="userAuthenticated"><a routerLink="tickets">Tickets</a></li>
-        <li *ngIf="!userAuthenticated"><a routerLink="login">Login</a></li>
-        <li *ngIf="userAuthenticated"><a (click)="onLogout()">Logout</a></li>
+        <ng-container *ngIf="authService.isAuthenticated(); else login">
+          <li><a routerLink="tickets">Tickets</a></li>
+          <li><a (click)="onLogout()">Logout</a></li>
+        </ng-container>
+        <ng-template #login>
+          <li><a routerLink="login">Login</a></li>
+        </ng-template>
       </ul>
     </div>
   </div>
