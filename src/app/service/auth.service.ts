@@ -17,9 +17,11 @@ export class AuthService {
   }
 
   loginWithGoogle() {
+    const provider = (new firebase.auth.GoogleAuthProvider()).setCustomParameters({prompt: 'select_account'});
+
     this.angularFireAuth
       .auth
-      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .signInWithPopup(provider)
       .then(u => {
         console.log('logged in!');
         this.router.navigate(['/home']);
