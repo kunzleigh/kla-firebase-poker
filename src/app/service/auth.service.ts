@@ -1,23 +1,25 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import {User, auth} from 'firebase/app';
 
 @Injectable()
 export class AuthService {
 
-  private authState: firebase.User = null;
+  private authState: User = null;
 
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
-    this.angularFireAuth.authState.subscribe((auth) => {
-      console.log('auth changed!');
-      console.log(auth);
-      this.authState = auth;
+    this.angularFireAuth.authState.subscribe((authState) => {
+      this.authState = authState;
+
+      if (!authState) {
+        this.router.navigate(['/login']);
+      }
     });
   }
 
   loginWithGoogle() {
-    const provider = (new firebase.auth.GoogleAuthProvider()).setCustomParameters({prompt: 'select_account'});
+    const provider = (new auth.GoogleAuthProvider()).setCustomParameters({prompt: 'select_account'});
 
     this.angularFireAuth
       .auth
