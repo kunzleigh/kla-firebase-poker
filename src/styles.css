@@ -5,4 +5,5 @@ body {
 
 .jumbotron {
   opacity: .9;
+  border-radius: 15px !important;
 }
