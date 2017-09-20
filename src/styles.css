@@ -2,3 +2,7 @@
 body {
   background-image: url('./assets/images/firebaseloader.gif');
 }
+
+.jumbotron {
+  opacity: .9;
+}
