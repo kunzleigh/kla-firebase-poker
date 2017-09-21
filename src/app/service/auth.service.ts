@@ -1,21 +1,19 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {User, auth} from 'firebase/app';
+import {auth} from 'firebase/app';
+import {NavService} from "./nav.service";
 
 @Injectable()
 export class AuthService {
 
-  private authState: User = null;
-
-  constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
+  constructor(private angularFireAuth: AngularFireAuth, private navService: NavService) {
     this.angularFireAuth.authState.subscribe((authState) => {
-      this.authState = authState;
-
-      if (!authState) {
-        this.router.navigate(['/login']);
-      }
+      // this.authState = authState;
     });
+  }
+
+  getUserName(): string {
+    return this.angularFireAuth.auth.currentUser.displayName;
   }
 
   loginWithGoogle() {
@@ -25,8 +23,7 @@ export class AuthService {
       .auth
       .signInWithPopup(provider)
       .then(u => {
-        console.log('logged in!');
-        this.router.navigate(['/home']);
+        this.navService.navigate('home');
       })
       .catch(e => {
         console.log('Ground control to major tom, your circuits dead there is something wrong', e.message);
@@ -35,14 +32,10 @@ export class AuthService {
 
   logout() {
     this.angularFireAuth.auth.signOut();
-    this.router.navigate(['/login']);
   }
 
   isAuthenticated() {
-    return this.authState != null;
+    return this.angularFireAuth.auth.currentUser != null;
   }
 
-  getAuthStateObservable() {
-    return this.angularFireAuth.authState;
-  }
 }

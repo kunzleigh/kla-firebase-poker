@@ -1,18 +1,27 @@
 <md-toolbar color="primary">
   <span>KLA Planning Poker</span>
+  <span *ngIf="authService.isAuthenticated()">Home</span>
+  <span *ngIf="authService.isAuthenticated()">Tickets</span>
+  <span *ngIf="authService.isAuthenticated()">Profile</span>
   <span class="header-spacer"></span>
 
   <button md-icon-button [mdMenuTriggerFor]="menu">
     <md-icon>more_vert</md-icon>
   </button>
   <md-menu #menu="mdMenu">
-    <button md-menu-item *ngIf="authService.isAuthenticated()">
+    <button md-menu-item (click)="navService.navigate('home')" *ngIf="authService.isAuthenticated()">
+      <span>Home</span>
+    </button>
+    <button md-menu-item (click)="navService.navigate('tickets')" *ngIf="authService.isAuthenticated()">
+      <span>Tickets</span>
+    </button>
+    <button md-menu-item (click)="navService.navigate('profile')" *ngIf="authService.isAuthenticated()">
       <span>Profile</span>
     </button>
-    <button md-menu-item (click)="authService.logout()" *ngIf="authService.isAuthenticated()">
+    <button md-menu-item (click)="navService.navigate('login')" *ngIf="authService.isAuthenticated()">
       <span>Logout</span>
     </button>
-    <button md-menu-item routerLink="login" (click)="authService.loginWithGoogle()" *ngIf="!authService.isAuthenticated()">
+    <button md-menu-item (click)="navService.navigate('login')" *ngIf="!authService.isAuthenticated()">
       <span>Login</span>
     </button>
   </md-menu>

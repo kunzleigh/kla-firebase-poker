@@ -2,9 +2,14 @@
 
 body {
   margin: 0 !important;
-  background-image: url('./assets/images/firebaseloader.gif');
+  /*background-image: url('./assets/images/firebaseloader.gif');*/
 }
 
 .header-spacer {
   flex: 1 1 auto;
+}
+
+.page-card {
+  margin: 5%;
+  opacity: .9;
 }

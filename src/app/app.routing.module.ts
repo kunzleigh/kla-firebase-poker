@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './component/home/home.component';
 import {AuthGuardService} from './service/auth-guard.service';
 import {LoginComponent} from './component/login/login.component';
-import {AuthService} from './service/auth.service';
 import {TicketListComponent} from "./component/ticket-list/ticket-list.component";
 
 const appRoutes: Routes = [
@@ -21,7 +20,6 @@ const appRoutes: Routes = [
     RouterModule
   ],
   providers: [
-    AuthService,
     AuthGuardService
   ]
 })

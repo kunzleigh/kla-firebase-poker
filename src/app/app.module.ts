@@ -15,6 +15,8 @@ import {TicketListComponent} from './component/ticket-list/ticket-list.component
 import {TicketService} from "./service/ticket.service";
 import {MaterialItemsModule} from "./material-items.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NavService} from "./service/nav.service";
+import {AuthService} from "./service/auth.service";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -36,15 +38,15 @@ const firebaseConfig = {
     TicketListComponent
   ],
   imports: [
-    MaterialItemsModule,
-    AppRoutingModule,
-    BrowserModule,
     BrowserAnimationsModule,
+    MaterialItemsModule,
+    // BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AppRoutingModule
   ],
-  providers: [TicketService],
+  providers: [TicketService, NavService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
