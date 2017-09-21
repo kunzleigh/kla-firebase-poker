@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {TicketService} from '../../service/ticket.service';
+import {NavService} from "../../service/nav.service";
 
 @Component({
   selector: 'app-ticket-list',
@@ -12,7 +13,7 @@ export class TicketListComponent {
   readonly isScrumMaster: boolean = true;
   readonly isScrumMasterPresent: boolean = true;
 
-  constructor(public ticketService: TicketService) {
+  constructor(public ticketService: TicketService, public navService: NavService) {
 
   }
 
