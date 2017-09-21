@@ -1,9 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 body {
+  margin: 0 !important;
   background-image: url('./assets/images/firebaseloader.gif');
 }
 
-.jumbotron {
-  opacity: .9;
-  border-radius: 15px !important;
+.header-spacer {
+  flex: 1 1 auto;
 }

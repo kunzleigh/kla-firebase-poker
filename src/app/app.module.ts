@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import {AngularFireAuthModule, AUTH_PROVIDERS} from 'angularfire2/auth';
+import {AngularFireAuthModule} from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -13,7 +13,8 @@ import { CreateRoomComponent } from './component/create-room/create-room.compone
 import { HomeComponent } from './component/home/home.component';
 import {TicketListComponent} from './component/ticket-list/ticket-list.component';
 import {TicketService} from "./service/ticket.service";
-import {AuthService} from './service/auth.service';
+import {MaterialItemsModule} from "./material-items.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -35,8 +36,10 @@ const firebaseConfig = {
     TicketListComponent
   ],
   imports: [
+    MaterialItemsModule,
     AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule
