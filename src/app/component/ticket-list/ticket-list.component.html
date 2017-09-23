@@ -9,7 +9,7 @@
   </md-card-header>
   <md-card-content>
     <ng-container *ngIf="(ticketService.ticketList$ | async)?.length; else none">
-      <md-card *ngFor="let t of ticketService.ticketList$ | async">
+      <md-card *ngFor="let t of ticketService.ticketList$ | async" class="card-as-row">
         <span>Title: <strong>{{ t.title }}</strong></span>
         <span>Description: <strong>{{ t.description }}</strong></span>
         <md-icon *ngIf="isScrumMasterPresent">star</md-icon>

@@ -3,3 +3,11 @@ md-chip {
   border-radius: 10px;
   padding: 3px;
 }
+
+.card-as-row {
+  cursor: pointer;
+  margin: 5px;
+}
+.card-as-row:hover {
+  box-shadow: rgba(63,81,181,1) 0 0 15px;
+}
