@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'tickets', component: TicketListComponent, canActivate: [AuthGuardService]},
-  {path: 'ticket', component: TicketCreateComponent, canActivate: [AuthGuardService]},
+  {path: 'create-ticket', component: TicketCreateComponent, canActivate: [AuthGuardService]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: '**', component: HomeComponent, canActivate: [AuthGuardService]}
 ];
