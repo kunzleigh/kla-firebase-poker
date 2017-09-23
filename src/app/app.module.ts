@@ -1,22 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-
-import { AppComponent } from './app.component';
-import { LoginComponent } from './component/login/login.component';
-import { RoomComponent } from './component/room/room.component';
-import { AppRoutingModule } from './app.routing.module';
-import { HeaderComponent } from './component/header/header.component';
-import { CreateRoomComponent } from './component/create-room/create-room.component';
-import { HomeComponent } from './component/home/home.component';
+import {AppComponent} from './app.component';
+import {LoginComponent} from './component/login/login.component';
+import {RoomComponent} from './component/room/room.component';
+import {AppRoutingModule} from './app.routing.module';
+import {HeaderComponent} from './component/header/header.component';
+import {CreateRoomComponent} from './component/create-room/create-room.component';
+import {HomeComponent} from './component/home/home.component';
 import {TicketListComponent} from './component/ticket-list/ticket-list.component';
 import {TicketService} from "./service/ticket.service";
-import {MaterialItemsModule} from "./material-items.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NavService} from "./service/nav.service";
 import {AuthService} from "./service/auth.service";
+import {MaterializeModule} from "angular2-materialize";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -38,13 +37,13 @@ const firebaseConfig = {
     TicketListComponent
   ],
   imports: [
-    BrowserAnimationsModule,
-    MaterialItemsModule,
-    // BrowserModule,
+    BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterializeModule,
+    BrowserAnimationsModule
   ],
   providers: [TicketService, NavService, AuthService],
   bootstrap: [AppComponent]
