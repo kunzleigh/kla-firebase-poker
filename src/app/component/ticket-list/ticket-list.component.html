@@ -5,7 +5,6 @@
     </md-card-title>
   </md-card-header>
   <md-card-content>
-    <md-progress-bar mode="indeterminate" *ngIf="(ticketService.loading$ | async) === true"></md-progress-bar>
     <ng-container *ngIf="(ticketService.ticketList$ | async)?.length; else none">
       <div *ngFor="let t of ticketService.ticketList$ | async">
         <span>{{ t.title }}</span>
