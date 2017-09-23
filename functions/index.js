@@ -8,6 +8,7 @@ exports.setupNewUser = functions.auth.user().onCreate(event => {
 
   admin.database().ref('/users/' + user.uid).set({
     name: user.displayName,
-    createdDate: new Date().toISOString(),
+    created: new Date().toISOString(),
+    createdBy: user.uid
   });
 });
