@@ -2,7 +2,7 @@
 
 body {
   margin: 0 !important;
-  background-image: url('./assets/images/firebaseloader.gif');
+  background: url('./assets/images/firebaseloader.gif') no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
