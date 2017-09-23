@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from '../../service/auth.service';
+import {NavService} from "../../service/nav.service";
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import {AuthService} from '../../service/auth.service';
 })
 export class LoginComponent {
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, public navService: NavService) {
 
   }
 

@@ -4,12 +4,15 @@ import {HomeComponent} from './component/home/home.component';
 import {AuthGuardService} from './service/auth-guard.service';
 import {LoginComponent} from './component/login/login.component';
 import {TicketListComponent} from "./component/ticket-list/ticket-list.component";
+import {ProfileComponent} from "./component/profile/profile.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
-  {path: 'tickets', component: TicketListComponent, canActivate: [AuthGuardService]}
+  {path: 'tickets', component: TicketListComponent, canActivate: [AuthGuardService]},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
+  {path: '**', component: HomeComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

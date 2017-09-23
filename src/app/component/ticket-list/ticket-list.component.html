@@ -1,19 +1,18 @@
-<!--<md-card class="page-card">-->
-  <!--<md-card-header>-->
-    <!--<md-card-title>-->
-      <!--<h1>Ticket List View <small>Show a list of the tickets that need estimated.</small></h1>-->
-    <!--</md-card-title>-->
-  <!--</md-card-header>-->
-  <!--<md-card-content>-->
-    <!--<div *ngFor="let t of ticketService.getTicketList()">-->
-      <!--<span>{{ t.title }}</span>-->
-      <!--<span>{{ t.description }}</span>-->
-      <!--<span *ngIf="isScrumMasterPresent" class="glyphicon glyphicon-star" aria-hidden="true"></span>-->
-      <!--<span class="badge">{{ t.votes?.length || 0 }}</span>-->
-    <!--</div>-->
-  <!--</md-card-content>-->
-  <!--<md-card-actions>-->
-    <!--<button md-raised-button color="accent" *ngIf="isScrumMaster">Add Ticket</button>-->
-  <!--</md-card-actions>-->
-<!--</md-card>-->
-TicketList
+<md-card class="page-card">
+  <md-card-header>
+    <md-card-title>
+      <h1>Ticket List View <small>Show a list of the tickets that need estimated.</small></h1>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <div *ngFor="let t of ticketService.getTicketList()">
+      <span>{{ t.title }}</span>
+      <span>{{ t.description }}</span>
+      <span *ngIf="isScrumMasterPresent" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <span class="badge">{{ t.votes?.length || 0 }}</span>
+    </div>
+  </md-card-content>
+  <md-card-actions>
+    <button md-raised-button color="primary" *ngIf="isScrumMaster">Add Ticket</button>
+  </md-card-actions>
+</md-card>

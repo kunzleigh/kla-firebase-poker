@@ -15,7 +15,8 @@ import {TicketService} from "./service/ticket.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NavService} from "./service/nav.service";
 import {AuthService} from "./service/auth.service";
-import {MaterializeModule} from "angular2-materialize";
+import {MaterialModule} from "./material.module";
+import {ProfileComponent} from "./component/profile/profile.component";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -34,16 +35,17 @@ const firebaseConfig = {
     HeaderComponent,
     CreateRoomComponent,
     HomeComponent,
-    TicketListComponent
+    TicketListComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AppRoutingModule,
-    MaterializeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [TicketService, NavService, AuthService],
   bootstrap: [AppComponent]

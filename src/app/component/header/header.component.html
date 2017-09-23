@@ -1,25 +1,12 @@
-<nav class="nav-extended">
-  <div class="nav-wrapper">
-    <a routerLink="home" class="brand-logo left">KLA Planning Poker</a>
-    <ul class="right show-on-large hide-on-med-and-down">
-      <li><a *ngIf="!authService.isAuthenticated()" routerLink="login">Login</a></li>
-      <li><a *ngIf="authService.isAuthenticated()" routerLink="login">Logout</a></li>
-    </ul>
-    <ul class="right hide-on-large-only show-on-med-and-down">
-      <li><a *ngIf="!authService.isAuthenticated()" routerLink="login"><i class="material-icons">lock_open</i></a></li>
-      <li><a *ngIf="authService.isAuthenticated()" routerLink="login"><i class="material-icons">lock</i></a></li>
-    </ul>
-  </div>
-  <div class="nav-content center">
-    <ul class="tabs tabs-transparent center show-on-medium-and-up hide-on-small-and-down">
-      <li class="tab"><a *ngIf="authService.isAuthenticated()" routerLink="home">Home</a></li>
-      <li class="tab"><a *ngIf="authService.isAuthenticated()" routerLink="tickets">Tickets</a></li>
-      <li class="tab"><a *ngIf="authService.isAuthenticated()" routerLink="profile">Profile</a></li>
-    </ul>
-    <ul class="tabs tabs-transparent center hide-on-med-and-up show-on-small">
-      <li class="tab"><a *ngIf="authService.isAuthenticated()" routerLink="home"><i class="material-icons">home</i></a></li>
-      <li class="tab"><a *ngIf="authService.isAuthenticated()" routerLink="tickets"><i class="material-icons">assignment</i></a></li>
-      <li class="tab"><a *ngIf="authService.isAuthenticated()" routerLink="profile"><i class="material-icons">person</i></a></li>
-    </ul>
-  </div>
-</nav>
+<md-toolbar color="primary">
+  <span>KLA Planning Poker</span>
+  <span class="header-spacer"></span>
+  <a md-button color="basic" routerLink="/login" *ngIf="!authService.isAuthenticated()">Login</a>
+  <a md-button color="basic" routerLink="/login" *ngIf="authService.isAuthenticated()">Logout</a>
+
+  <md-toolbar-row>
+    <a md-button routerLink="/home">Home</a>
+    <a md-button routerLink="/tickets">Tickets</a>
+    <a md-button routerLink="/profile">Profile</a>
+  </md-toolbar-row>
+</md-toolbar>

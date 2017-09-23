@@ -1,15 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {auth} from 'firebase/app';
-import {NavService} from "./nav.service";
 
 @Injectable()
 export class AuthService {
 
-  constructor(private angularFireAuth: AngularFireAuth, private navService: NavService) {
-    this.angularFireAuth.authState.subscribe((authState) => {
-      // this.authState = authState;
-    });
+  constructor(private angularFireAuth: AngularFireAuth) {
+
   }
 
   getUserName(): string {
@@ -22,9 +19,6 @@ export class AuthService {
     this.angularFireAuth
       .auth
       .signInWithPopup(provider)
-      .then(u => {
-        this.navService.navigate('home');
-      })
       .catch(e => {
         console.log('Ground control to major tom, your circuits dead there is something wrong', e.message);
       });

@@ -2,7 +2,11 @@
 
 body {
   margin: 0 !important;
-  /*background-image: url('./assets/images/firebaseloader.gif');*/
+  background-image: url('./assets/images/firebaseloader.gif');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .header-spacer {
