@@ -1,0 +1,41 @@
+import { Injectable, Inject } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+import { FirebaseApp } from 'angularfire2';
+import {Upload} from '../class/upload';
+import 'firebase/storage';
+
+@Injectable()
+export class UploadService {
+
+  private uploadTask: firebase.storage.UploadTask;
+  private storageRef;
+  uploadProgress: Subject<number>;
+  uploadFinished: Subject<string>;
+
+  constructor(@Inject(FirebaseApp) firebaseApp: firebase.app.App) {
+    this.storageRef = firebase.storage().ref();
+    this.uploadProgress = new Subject();
+    this.uploadFinished = new Subject();
+  }
+
+  upload(upload: Upload) {
+    this.uploadTask = storageRef.child('${upload.path}/${upload.name}').put(upload.file);
+    const progress = 0;
+
+    this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot: any) =>  {
+        // upload in progress
+        this.uploadProgress.next((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      },
+      (error) => {
+        // upload failed
+        console.log(error);
+      },
+      () => {
+        // upload finished successfully
+        this.uploadFinished.next(this.uploadTask.snapshot.downloadURL);
+      }
+    );
+  }
+
+}
