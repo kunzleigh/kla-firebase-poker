@@ -2,13 +2,59 @@
   "rules": {
     ".read": false,
     ".write": false,
-    
-    "rooms": {
-      "$room_id": {
+
+    "users": {
+      "$userId": {
         ".read": "auth != null",
-        ".write": "auth != null && auth.uid == data.child('$uid').val()",
-//           comments work? only allow access to room if auth id matches room child uid
-        "$uid": {}
+        ".write": "auth != null && auth.uid == $userId",
+        "created": {".validate": "newData.isString()"},
+        "createdBy": {".validate": "newData.isString()"},
+        "lastModified": {},
+        "lastModifiedBy": {},
+        "name": {".validate": "newData.isString()"},
+        "$imageId": {}
+        //TODO: function to pair tickets with users
+        //TODO: function to pair votes with users
+        //TODO: function to pair admins with users??
+      }
+    },
+    "rooms": {
+      //TODO: Rooms functionality, build rooms/projects to encase tickets.
+    },
+    "tickets": {
+      "$ticketId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "created": {".validate": "newData.isString()"},
+        "createdBy": {".validate": "newData.isString()"},
+        "lastModified": {},
+        "lastModifiedBy": {},
+        "title": {},
+        "description": {},
+        //TODO: function to pair votes with tickets
+        "votes": {
+          "$voteId": {
+            ".read": "auth != null",
+            ".write": "auth != null && auth.uid == data.child('createdBy').val()",
+            "created": {".validate": "newData.isString()"},
+            "createdBy": {".validate": "newData.isString()"},
+            "lastModified": {},
+            "lastModifiedBy": {},
+            "value": {".validate": "newData.isString()"}
+          }
+        }
+      }
+    },
+    "admins": {
+      "$adminId": {
+        ".read": "auth != null",
+        //TODO: only manual entry for now.
+        ".write": false,
+        "created": {".validate": "newData.isString()"},
+        "createdBy": {".validate": "newData.isString()"},
+        "lastModified": {},
+        "lastModifiedBy": {},
+        "$uid": {".validate": "newData.isString()"}
       }
     }
   }
