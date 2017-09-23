@@ -22,9 +22,9 @@
       //TODO: Rooms functionality, build rooms/projects to encase tickets.
     },
     "tickets": {
+      ".read": "auth != null",
+      ".write": "auth != null",
       "$ticketId": {
-        ".read": "auth != null",
-        ".write": "auth != null",
         "created": {".validate": "newData.isString()"},
         "createdBy": {".validate": "newData.isString()"},
         "lastModified": {},
