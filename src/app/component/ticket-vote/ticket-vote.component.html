@@ -1,0 +1,34 @@
+<md-card class="page-card">
+  <md-card-header>
+    <md-card-title>
+      <h1>Create Ticket</h1>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        <md-panel-title>
+          Ticket Info
+        </md-panel-title>
+        <md-panel-description>
+          Type ticket title and description
+        </md-panel-description>
+      </md-expansion-panel-header>
+
+      <md-form-field>
+        <input mdInput placeholder="Title" [(ngModel)]="title">
+      </md-form-field>
+
+      <md-form-field>
+        <input mdInput placeholder="Description" [(ngModel)]="description">
+      </md-form-field>
+
+      <md-checkbox [(ngModel)]="more">Create Another</md-checkbox>
+    </md-expansion-panel>
+  </md-card-content>
+  <md-card-actions>
+    <button md-raised-button color="primary" (click)="createTicket()" [disabled]="!title || !description">Create</button>
+    <button md-raised-button color="basic" (click)="clearForm()" [disabled]="!title && !description && !more">Clear</button>
+    <button md-raised-button color="basic" (click)="goToTicketList()">Cancel</button>
+  </md-card-actions>
+</md-card>

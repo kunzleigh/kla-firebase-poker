@@ -21,6 +21,7 @@ import {TicketCreateComponent} from "./component/ticket-create/ticket-create.com
 import {FormsModule} from "@angular/forms";
 import {UserProfileService} from './service/user-profile.service';
 import {StorageService} from './service/storage.service';
+import {TicketVoteComponent} from "./component/ticket-vote/ticket-vote.component";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -41,7 +42,8 @@ const firebaseConfig = {
     HomeComponent,
     TicketCreateComponent,
     TicketListComponent,
-    ProfileComponent
+    ProfileComponent,
+    TicketVoteComponent
   ],
   imports: [
     BrowserModule,

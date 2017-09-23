@@ -9,12 +9,13 @@
   </md-card-header>
   <md-card-content>
     <ng-container *ngIf="(ticketService.ticketList$ | async)?.length; else none">
-      <div *ngFor="let t of ticketService.ticketList$ | async">
-        <span>{{ t.title }}</span>
-        <span>{{ t.description }}</span>
-        <span *ngIf="isScrumMasterPresent" class="glyphicon glyphicon-star" aria-hidden="true"></span>
-        <span class="badge">{{ t.votes?.length || 0 }}</span>
-      </div>
+      <md-card *ngFor="let t of ticketService.ticketList$ | async">
+        <span>Title: <strong>{{ t.title }}</strong></span>
+        <span>Description: <strong>{{ t.description }}</strong></span>
+        <md-icon *ngIf="isScrumMasterPresent">star</md-icon>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span class="badge">Votes: <strong>{{ t.votes?.length || 0 }}</strong></span>
+      </md-card>
     </ng-container>
     <ng-template #none>
       There are no tickets.. Yet?
