@@ -1,9 +1,8 @@
 import {Injectable, OnInit} from '@angular/core';
 import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database';
-import {UserProfile} from '../../model/UserProfile';
-import {AuthService} from '../auth.service';
 import 'firebase/storage';
-import {FirebaseApp} from 'angularfire2';
+import {User} from '../class/user';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class UserProfileService implements OnInit {
@@ -14,11 +13,11 @@ export class UserProfileService implements OnInit {
 
   ngOnInit() {}
 
-  saveUserProfile(userProfile: UserProfile) {
-    this.afDatabase.object('users/' + userProfile.uid).update(userProfile);
+  saveUserProfile(user: User) {
+    this.afDatabase.object('users/' + this.authService.getUserId()).update(user);
   }
 
-  getUserProfile(): FirebaseObjectObservable<UserProfile> {
+  getUserProfile(): FirebaseObjectObservable<User> {
     return this.afDatabase.object('users/' + this.authService.getUserId());
   }
 

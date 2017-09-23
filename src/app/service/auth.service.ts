@@ -13,6 +13,10 @@ export class AuthService {
     return this.angularFireAuth.auth.currentUser.displayName;
   }
 
+  getUserId(): string {
+    return this.angularFireAuth.auth.currentUser.uid;
+  }
+
   loginWithGoogle() {
     const provider = (new auth.GoogleAuthProvider()).setCustomParameters({prompt: 'select_account'});
 

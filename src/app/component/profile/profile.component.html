@@ -1,13 +1,25 @@
 <md-card class="page-card">
   <md-card-header>
     <md-card-title>
-      <h1>Profile</h1>
+      <h1>{{user.name}}</h1>
     </md-card-title>
   </md-card-header>
   <md-card-content>
-
+    <div>
+      <img src="{{user.imageUrl}}" class="md-card-image" alt="user profile image">
+    </div>
+    <div>
+      <md-form-field>
+        <input mdInput placeholder="Image Name" [(ngModel)]="upload.name">
+      </md-form-field>
+    </div>
   </md-card-content>
   <md-card-actions>
-
+    <!--todo need to implement a way to let them know the file was selected correctly-->
+    <button md-raised-button color="basic">
+      <input type="file" class="hide" (change)="onFileSelected($event)">
+      Browse...
+    </button>
+    <button md-raised-button color="primary" (click)="onUploadImage()" [disabled]="!upload.file || !upload.name">Save Image</button>
   </md-card-actions>
 </md-card>

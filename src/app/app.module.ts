@@ -19,6 +19,8 @@ import {MaterialModule} from "./material.module";
 import {ProfileComponent} from "./component/profile/profile.component";
 import {TicketCreateComponent} from "./component/ticket-create/ticket-create.component";
 import {FormsModule} from "@angular/forms";
+import {UserProfileService} from './service/user-profile.service';
+import {StorageService} from './service/storage.service';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -51,7 +53,7 @@ const firebaseConfig = {
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [TicketService, NavService, AuthService],
+  providers: [TicketService, NavService, AuthService, UserProfileService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

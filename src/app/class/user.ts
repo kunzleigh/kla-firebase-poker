@@ -5,5 +5,5 @@ import {Auditable} from "./auditable";
  */
 export class User extends Auditable {
   name: String;
-  $imageId: String;
+  imageUrl: String;
 }

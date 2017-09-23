@@ -2,10 +2,11 @@ import { Injectable, Inject } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { FirebaseApp } from 'angularfire2';
 import {Upload} from '../class/upload';
+import * as firebase from 'firebase';
 import 'firebase/storage';
 
 @Injectable()
-export class UploadService {
+export class StorageService {
 
   private uploadTask: firebase.storage.UploadTask;
   private storageRef;
@@ -19,7 +20,8 @@ export class UploadService {
   }
 
   upload(upload: Upload) {
-    this.uploadTask = storageRef.child('${upload.path}/${upload.name}').put(upload.file);
+    console.log(upload);
+    this.uploadTask = this.storageRef.child(upload.path + '/' +  upload.name).put(upload.file);
     const progress = 0;
 
     this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
@@ -36,6 +38,10 @@ export class UploadService {
         this.uploadFinished.next(this.uploadTask.snapshot.downloadURL);
       }
     );
+  }
+
+  getDownLoadurl(id: string) {
+
   }
 
 }
