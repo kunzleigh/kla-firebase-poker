@@ -1,21 +1,22 @@
-<md-card class="page-card">
-  <md-card-header>
-    <md-card-title>
-      <h1>Title</h1>
-    </md-card-title>
-  </md-card-header>
-  <md-card-content>
-    <ng-container *ngIf="authService.isAuthenticated(); else login">
-      <h2>Welcome, {{ authService.getUserName() }}</h2>
-      <p>Shall we check out some tickets?</p>
-    </ng-container>
-    <ng-template #login>
-      <h2>You are not logged in!</h2>
-      <p>Please log in to begin the fun.</p>
-    </ng-template>
-  </md-card-content>
-  <md-card-actions>
-    <button md-raised-button color="accent" (click)="authService.loginWithGoogle()" *ngIf="!authService.isAuthenticated()">Login</button>
-    <button md-raised-button color="accent" (click)="authService.logout()" *ngIf="authService.isAuthenticated()">Logout</button>
-  </md-card-actions>
-</md-card>
+<!--<md-card class="page-card">-->
+  <!--<md-card-header>-->
+    <!--<md-card-title>-->
+      <!--<h1>Title</h1>-->
+    <!--</md-card-title>-->
+  <!--</md-card-header>-->
+  <!--<md-card-content>-->
+    <!--<ng-container *ngIf="authService.isAuthenticated(); else login">-->
+      <!--<h2>Welcome, {{ authService.getUserName() }}</h2>-->
+      <!--<p>Shall we check out some tickets?</p>-->
+    <!--</ng-container>-->
+    <!--<ng-template #login>-->
+      <!--<h2>You are not logged in!</h2>-->
+      <!--<p>Please log in to begin the fun.</p>-->
+    <!--</ng-template>-->
+  <!--</md-card-content>-->
+  <!--<md-card-actions>-->
+    <!--<button md-raised-button color="accent" (click)="authService.loginWithGoogle()" *ngIf="!authService.isAuthenticated()">Login</button>-->
+    <!--<button md-raised-button color="accent" (click)="authService.logout()" *ngIf="authService.isAuthenticated()">Logout</button>-->
+  <!--</md-card-actions>-->
+<!--</md-card>-->
+Login
