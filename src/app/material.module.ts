@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdExpansionModule, MdFormFieldModule, MdIconModule,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdExpansionModule, MdFormFieldModule, MdGridListModule,
+  MdIconModule,
   MdInputModule, MdListModule,
   MdProgressBarModule,
   MdToolbarModule
@@ -18,7 +19,8 @@ import {
     MdInputModule,
     MdCheckboxModule,
     MdChipsModule,
-    MdListModule
+    MdListModule,
+    MdGridListModule
   ],
   exports: [
     MdButtonModule,
@@ -31,7 +33,8 @@ import {
     MdInputModule,
     MdCheckboxModule,
     MdChipsModule,
-    MdListModule
+    MdListModule,
+    MdGridListModule
   ]
 })
 export class MaterialModule {
