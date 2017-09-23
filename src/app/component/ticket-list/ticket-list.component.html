@@ -18,6 +18,6 @@
     </ng-template>
   </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" *ngIf="isScrumMaster" (click)="ticketService.createTicket('My Ticket', 'My Ticket\'s description')">Add Ticket</button>
+    <button md-raised-button color="primary" *ngIf="isScrumMaster" (click)="navService.navigate('/create-ticket')">Create Ticket</button>
   </md-card-actions>
 </md-card>
