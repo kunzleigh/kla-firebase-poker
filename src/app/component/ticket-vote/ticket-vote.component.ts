@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {TicketService} from '../../service/ticket.service';
 import {NavService} from "../../service/nav.service";
+import {Vote} from "../../class/vote";
 
 @Component({
   selector: 'app-ticket-vote',
@@ -9,31 +10,30 @@ import {NavService} from "../../service/nav.service";
 })
 export class TicketVoteComponent {
 
-  title: string;
-  description: string;
-  more: boolean;
+  ticketId: string;
+  vote: Vote;
 
   constructor(public ticketService: TicketService, public navService: NavService) {
 
   }
-
-  clearForm() {
-    this.title = '';
-    this.description = '';
-    this.more = false;
-  }
-
-  goToTicketList() {
-    this.navService.navigate('/tickets');
-  }
-
-  createTicket() {
-    this.ticketService.createTicket(this.title, this.description);
-    if (this.more) {
-      this.clearForm();
-    } else {
-      this.goToTicketList();
-    }
-  }
+  //
+  // clearForm() {
+  //   this.title = '';
+  //   this.description = '';
+  //   this.more = false;
+  // }
+  //
+  // goToTicketList() {
+  //   this.navService.navigate('/tickets');
+  // }
+  //
+  // createTicket() {
+  //   this.ticketService.createTicket(this.title, this.description);
+  //   if (this.more) {
+  //     this.clearForm();
+  //   } else {
+  //     this.goToTicketList();
+  //   }
+  // }
 
 }
