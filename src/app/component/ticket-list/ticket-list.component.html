@@ -1,7 +1,10 @@
 <md-card class="page-card">
   <md-card-header>
     <md-card-title>
-      <h1>Tickets</h1>
+      <h1>
+        Tickets
+        <md-chip>{{ (ticketService.ticketList$ | async)?.length || 0 }}</md-chip>
+      </h1>
     </md-card-title>
   </md-card-header>
   <md-card-content>

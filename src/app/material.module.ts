@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdExpansionModule, MdFormFieldModule, MdIconModule, MdInputModule,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdExpansionModule, MdFormFieldModule, MdIconModule,
+  MdInputModule,
   MdProgressBarModule,
   MdToolbarModule
 } from '@angular/material';
@@ -15,7 +16,8 @@ import {
     MdExpansionModule,
     MdFormFieldModule,
     MdInputModule,
-    MdCheckboxModule
+    MdCheckboxModule,
+    MdChipsModule
   ],
   exports: [
     MdButtonModule,
@@ -26,7 +28,8 @@ import {
     MdExpansionModule,
     MdFormFieldModule,
     MdInputModule,
-    MdCheckboxModule
+    MdCheckboxModule,
+    MdChipsModule
   ]
 })
 export class MaterialModule {
