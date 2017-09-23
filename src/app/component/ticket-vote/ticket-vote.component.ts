@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {TicketService} from '../../service/ticket.service';
 import {NavService} from "../../service/nav.service";
 import {Vote} from "../../class/vote";
@@ -16,24 +16,5 @@ export class TicketVoteComponent {
   constructor(public ticketService: TicketService, public navService: NavService) {
 
   }
-  //
-  // clearForm() {
-  //   this.title = '';
-  //   this.description = '';
-  //   this.more = false;
-  // }
-  //
-  // goToTicketList() {
-  //   this.navService.navigate('/tickets');
-  // }
-  //
-  // createTicket() {
-  //   this.ticketService.createTicket(this.title, this.description);
-  //   if (this.more) {
-  //     this.clearForm();
-  //   } else {
-  //     this.goToTicketList();
-  //   }
-  // }
 
 }
