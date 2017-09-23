@@ -17,6 +17,7 @@ import {NavService} from "./service/nav.service";
 import {AuthService} from "./service/auth.service";
 import {MaterialModule} from "./material.module";
 import {ProfileComponent} from "./component/profile/profile.component";
+import {TicketCreateComponent} from "./component/ticket-create/ticket-create.component";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -35,6 +36,7 @@ const firebaseConfig = {
     HeaderComponent,
     CreateRoomComponent,
     HomeComponent,
+    TicketCreateComponent,
     TicketListComponent,
     ProfileComponent
   ],

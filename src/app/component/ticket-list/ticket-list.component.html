@@ -5,14 +5,20 @@
     </md-card-title>
   </md-card-header>
   <md-card-content>
-    <div *ngFor="let t of ticketService.ticketList$ | async">
-      <span>{{ t.title }}</span>
-      <span>{{ t.description }}</span>
-      <span *ngIf="isScrumMasterPresent" class="glyphicon glyphicon-star" aria-hidden="true"></span>
-      <span class="badge">{{ t.votes?.length || 0 }}</span>
-    </div>
+    <md-progress-bar mode="indeterminate" *ngIf="(ticketService.loading$ | async) === true"></md-progress-bar>
+    <ng-container *ngIf="(ticketService.ticketList$ | async)?.length; else none">
+      <div *ngFor="let t of ticketService.ticketList$ | async">
+        <span>{{ t.title }}</span>
+        <span>{{ t.description }}</span>
+        <span *ngIf="isScrumMasterPresent" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span class="badge">{{ t.votes?.length || 0 }}</span>
+      </div>
+    </ng-container>
+    <ng-template #none>
+      There are no tickets.. Yet?
+    </ng-template>
   </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" *ngIf="isScrumMaster">Add Ticket</button>
+    <button md-raised-button color="primary" *ngIf="isScrumMaster" (click)="ticketService.createTicket('My Ticket', 'My Ticket\'s description')">Add Ticket</button>
   </md-card-actions>
 </md-card>
