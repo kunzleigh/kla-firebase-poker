@@ -3,6 +3,6 @@
  */
 export class Upload {
   name: String;
-  path: string
+  path: string;
   file: any;
 }
