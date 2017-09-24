@@ -32,7 +32,7 @@ exports.ticketStats = functions.https.onRequest((req, res) => {
 
 });
 
-function syncVote(event, isCreate) {
+function voteSync(event, isCreate) {
   if (event.data.exists()) {
     const $uid = event.params.$uid;
     const $key = event.data.key;
@@ -51,8 +51,8 @@ function syncVote(event, isCreate) {
   }
 }
 exports.voteSyncCreate = functions.database.ref('/users/{$uid}/votes/{$voteId}').onCreate(event => {
-  return syncVote(event, true);
+  return voteSync(event, true);
 });
 exports.voteSyncUpdate = functions.database.ref('/users/{$uid}/votes/{$voteId}').onUpdate(event => {
-  return syncVote(event, false);
+  return voteSync(event, false);
 });
