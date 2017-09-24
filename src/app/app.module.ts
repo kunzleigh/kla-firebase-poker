@@ -23,6 +23,8 @@ import {UserProfileService} from './service/user-profile.service';
 import {StorageService} from './service/storage.service';
 import {TicketVoteComponent} from "./component/ticket-vote/ticket-vote.component";
 import {environment} from '../environments/environment';
+import {FindPipe} from "./pipe/find.pipe";
+import {VoteService} from "./service/vote.service";
 import {LoaderComponent} from './component/loader/loader.component';
 import {LoaderService} from './service/loader.service';
 
@@ -38,6 +40,7 @@ import {LoaderService} from './service/loader.service';
     TicketListComponent,
     ProfileComponent,
     TicketVoteComponent,
+    FindPipe
     LoaderComponent
   ],
   imports: [
@@ -50,7 +53,14 @@ import {LoaderService} from './service/loader.service';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [TicketService, NavService, AuthService, UserProfileService, StorageService, LoaderService],
+  providers: [
+    TicketService,
+    NavService,
+    AuthService,
+    UserProfileService,
+    StorageService,
+    VoteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

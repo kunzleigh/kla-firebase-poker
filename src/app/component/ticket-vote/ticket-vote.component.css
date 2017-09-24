@@ -17,3 +17,13 @@
   display: inline-block !important;
   flex: none;
 }
+.vote-detail-row-1 {
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+  font-weight: bold;
+}
+.vote-detail-row-2 {
+  display: inline-block;
+  width: 75%;
+}

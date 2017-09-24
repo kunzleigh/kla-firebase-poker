@@ -7,15 +7,16 @@
       "$userId": {
         ".read": "auth != null",
         ".write": "auth != null && auth.uid == $userId",
-        "created": {".validate": "newData.isString()"},
-        "createdBy": {".validate": "newData.isString()"},
-        "lastModified": {},
-        "lastModifiedBy": {},
-        "name": {".validate": "newData.isString()"},
-        "$imageId": {}
-        //TODO: function to pair tickets with users
-        //TODO: function to pair votes with users
-        //TODO: function to pair admins with users??
+        "votes": {
+          "$voteId": {
+            ".validate": "newData.hasChild('ticketId') && newData.child('ticketId').isString() && newData.hasChild('value') && newData.child('value').isNumber()"
+          }
+        },
+        "tickets": {
+          "$ticketId": {
+
+          }
+        }
       }
     },
     "rooms": {
@@ -25,22 +26,10 @@
       ".read": "auth != null",
       ".write": "auth != null",
       "$ticketId": {
-        "created": {".validate": "newData.isString()"},
-        "createdBy": {".validate": "newData.isString()"},
-        "lastModified": {},
-        "lastModifiedBy": {},
-        "title": {},
-        "description": {},
         //TODO: function to pair votes with tickets
         "votes": {
           "$voteId": {
-            ".read": "auth != null",
-            ".write": "auth != null && auth.uid == data.child('createdBy').val()",
-            "created": {".validate": "newData.isString()"},
-            "createdBy": {".validate": "newData.isString()"},
-            "lastModified": {},
-            "lastModifiedBy": {},
-            "value": {".validate": "newData.isString()"}
+
           }
         }
       }
@@ -50,10 +39,6 @@
         ".read": "auth != null",
         //TODO: only manual entry for now.
         ".write": false,
-        "created": {".validate": "newData.isString()"},
-        "createdBy": {".validate": "newData.isString()"},
-        "lastModified": {},
-        "lastModifiedBy": {},
         "$uid": {".validate": "newData.isString()"}
       }
     }
