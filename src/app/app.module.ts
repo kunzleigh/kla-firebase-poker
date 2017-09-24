@@ -23,6 +23,8 @@ import {UserProfileService} from './service/user-profile.service';
 import {StorageService} from './service/storage.service';
 import {TicketVoteComponent} from "./component/ticket-vote/ticket-vote.component";
 import {environment} from '../environments/environment';
+import {FindPipe} from "./pipe/find.pipe";
+import {VoteService} from "./service/vote.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import {environment} from '../environments/environment';
     TicketCreateComponent,
     TicketListComponent,
     ProfileComponent,
-    TicketVoteComponent
+    TicketVoteComponent,
+    FindPipe
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,14 @@ import {environment} from '../environments/environment';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [TicketService, NavService, AuthService, UserProfileService, StorageService],
+  providers: [
+    TicketService,
+    NavService,
+    AuthService,
+    UserProfileService,
+    StorageService,
+    VoteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,24 +21,28 @@
 
     </md-expansion-panel>
 
-    <md-expansion-panel expanded="true">
-      <md-expansion-panel-header>
-        <md-panel-title class="header-ratio-1">
-          Place Your Vote
-        </md-panel-title>
-        <md-panel-description class="header-ratio-2">
-          {{ selected ? (selected?.value + ', ' + selected?.description) : 'No Vote' }}
-        </md-panel-description>
-      </md-expansion-panel-header>
-      <md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="selectVote(fib)">
-
-      </md-card>
-    </md-expansion-panel>
+    <!--<md-expansion-panel expanded="true">-->
+      <!--<md-expansion-panel-header>-->
+        <!--<md-panel-title class="header-ratio-1">-->
+          <!--Place Your Vote-->
+        <!--</md-panel-title>-->
+        <!--<md-panel-description class="header-ratio-2">-->
+          <!--{{ ((current && current.votes) ? ((current | find:authService.getUserId():'$key':current.votes) | find::'value':FIBONOCCI) : 'No Vote') }}-->
+        <!--</md-panel-description>-->
+      <!--</md-expansion-panel-header>-->
+      <!--<md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="selectVote(fib)">-->
+        <!--<div class="vote-detail-row-1">-->
+          <!--{{ fib.value }}-->
+        <!--</div>-->
+        <!--<div class="vote-detail-row-2">-->
+          <!--{{ fib.description }}-->
+        <!--</div>-->
+      <!--</md-card>-->
+    <!--</md-expansion-panel>-->
 
   </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" (click)="saveVote()" [disabled]="!title || !description">Save</button>
-    <button md-raised-button color="basic" (click)="clearVote()" [disabled]="!title && !description && !more">Clear</button>
+    <button md-raised-button color="basic" (click)="clearVote()" [disabled]="!selected">Clear</button>
     <button md-raised-button color="basic" (click)="goToTicketList()">Cancel</button>
   </md-card-actions>
 </md-card>

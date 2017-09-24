@@ -25,6 +25,7 @@
     </ng-template>
   </md-card-content>
   <md-card-actions>
+    <button md-raised-button color="primary" (click)="addVote()">Add Vote</button>
     <button md-raised-button color="primary" *ngIf="isScrumMaster" (click)="navService.navigate('/create-ticket')">Create Ticket</button>
   </md-card-actions>
 </md-card>

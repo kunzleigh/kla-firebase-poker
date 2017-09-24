@@ -5,6 +5,7 @@ import {FIBONACCI, Fibonacci} from "../../class/fibonacci";
 import {Ticket} from "../../class/ticket";
 import {ISubscription} from "rxjs/Subscription";
 import {ActivatedRoute} from "@angular/router";
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-ticket-vote',
@@ -20,7 +21,7 @@ export class TicketVoteComponent implements OnInit, OnDestroy {
 
   private _routeSubscription: ISubscription;
 
-  constructor(public ticketService: TicketService, public navService: NavService, private route: ActivatedRoute) {
+  constructor(public ticketService: TicketService, public navService: NavService, private route: ActivatedRoute, public authService: AuthService) {
 
   }
 
