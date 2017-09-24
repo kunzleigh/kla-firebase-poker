@@ -1,0 +1,19 @@
+.card-as-row {
+  cursor: pointer;
+  margin: 5px;
+}
+.card-as-row:hover {
+  box-shadow: rgba(63,81,181,1) 0 0 15px;
+}
+.header-ratio-1 {
+  width: 30% !important;
+  flex: none;
+}
+.header-ratio-2 {
+  width: 50% !important;
+  flex: none;
+}
+.inline-div {
+  display: inline-block !important;
+  flex: none;
+}

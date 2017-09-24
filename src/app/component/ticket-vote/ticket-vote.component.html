@@ -1,34 +1,44 @@
 <md-card class="page-card">
   <md-card-header>
     <md-card-title>
-      <h1>Create Ticket</h1>
+      <h1>Vote!</h1>
     </md-card-title>
   </md-card-header>
   <md-card-content>
-    <md-expansion-panel>
-      <md-expansion-panel-header>
-        <md-panel-title>
-          Ticket Info
+
+    <md-expansion-panel expanded="true">
+      <md-expansion-panel-header class="mat-expanded">
+        <md-panel-title class="header-ratio-1">
+          Title
         </md-panel-title>
-        <md-panel-description>
-          Type ticket title and description
+        <md-panel-description class="header-ratio-2">
+          Description
         </md-panel-description>
       </md-expansion-panel-header>
 
-      <md-form-field>
-        <input mdInput placeholder="Title" [(ngModel)]="title">
-      </md-form-field>
+      <div class="header-ratio-1 inline-div">{{ current?.title }}</div>
+      <div class="header-ratio-2 inline-div">{{ current?.description }}</div>
 
-      <md-form-field>
-        <input mdInput placeholder="Description" [(ngModel)]="description">
-      </md-form-field>
-
-      <md-checkbox [(ngModel)]="more">Create Another</md-checkbox>
     </md-expansion-panel>
+
+    <md-expansion-panel expanded="true">
+      <md-expansion-panel-header>
+        <md-panel-title class="header-ratio-1">
+          Place Your Vote
+        </md-panel-title>
+        <md-panel-description class="header-ratio-2">
+          {{ selected ? (selected?.value + ', ' + selected?.description) : 'No Vote' }}
+        </md-panel-description>
+      </md-expansion-panel-header>
+      <md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="selectVote(fib)">
+
+      </md-card>
+    </md-expansion-panel>
+
   </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" (click)="createTicket()" [disabled]="!title || !description">Create</button>
-    <button md-raised-button color="basic" (click)="clearForm()" [disabled]="!title && !description && !more">Clear</button>
+    <button md-raised-button color="primary" (click)="saveVote()" [disabled]="!title || !description">Save</button>
+    <button md-raised-button color="basic" (click)="clearVote()" [disabled]="!title && !description && !more">Clear</button>
     <button md-raised-button color="basic" (click)="goToTicketList()">Cancel</button>
   </md-card-actions>
 </md-card>
