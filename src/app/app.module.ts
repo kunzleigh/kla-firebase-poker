@@ -22,15 +22,7 @@ import {FormsModule} from "@angular/forms";
 import {UserProfileService} from './service/user-profile.service';
 import {StorageService} from './service/storage.service';
 import {TicketVoteComponent} from "./component/ticket-vote/ticket-vote.component";
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
-  authDomain: 'kla-scrum-poker.firebaseapp.com',
-  databaseURL: 'https://kla-scrum-poker.firebaseio.com',
-  projectId: 'kla-scrum-poker',
-  storageBucket: 'kla-scrum-poker.appspot.com',
-  messagingSenderId: '735057512980'
-};
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -49,7 +41,7 @@ const firebaseConfig = {
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
