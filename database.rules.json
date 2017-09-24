@@ -9,7 +9,7 @@
         ".write": "auth != null && auth.uid == $userId",
         "votes": {
           "$voteId": {
-
+            ".validate": "newData.hasChild('ticketId') && newData.child('ticketId').isString()"
           }
         },
         "tickets": {
@@ -28,9 +28,8 @@
       "$ticketId": {
         //TODO: function to pair votes with tickets
         "votes": {
-          "$uid": {
-            ".read": "auth != null",
-            ".write": "auth != null && auth.uid == data.child('createdBy').val()"
+          "$voteId": {
+
           }
         }
       }
