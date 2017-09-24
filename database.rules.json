@@ -9,7 +9,7 @@
         ".write": "auth != null && auth.uid == $userId",
         "votes": {
           "$voteId": {
-            ".validate": "newData.hasChild('ticketId') && newData.child('ticketId').isString()"
+            ".validate": "newData.hasChild('ticketId') && newData.child('ticketId').isString() && newData.hasChild('created') && newData.child('created').isString() && newData.hasChild('createdBy') && newData.child('createdBy').isString() && newData.hasChild('value') && newData.child('value').isNumber()"
           }
         },
         "tickets": {
