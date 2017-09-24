@@ -12,21 +12,21 @@ import {User} from '../../class/user';
 export class ProfileComponent implements OnInit {
   user: User;
   upload: Upload;
-  progress;
+  progress: number;
   private uploadPath = 'user-profile-images';
 
-  constructor(private userProfileService: UserProfileService, private storageService: StorageService) {}
+  constructor(private userProfileService: UserProfileService,
+              private storageService: StorageService) {}
 
   ngOnInit() {
     this.user = new User();
-    this.upload = new Upload();
-    this.upload.path = this.uploadPath;
+    this.initUpload();
     this.userProfileService.getUserProfile().subscribe(user => this.user = user);
-    //todo implement an in progress deal
     this.storageService.uploadProgress.subscribe(progress => this.progress = progress);
     this.storageService.uploadFinished.subscribe((downloadUrl: string) => {
       this.user.imageUrl = downloadUrl;
       this.userProfileService.saveUserProfile(this.user);
+      this.initUpload();
     });
   }
 
@@ -39,5 +39,11 @@ export class ProfileComponent implements OnInit {
     if (files.length > 0) {
       this.upload.file = files[0];
     }
+  }
+
+  initUpload() {
+    this.upload = new Upload();
+    this.upload.path = this.uploadPath;
+    this.progress = 0;
   }
 }

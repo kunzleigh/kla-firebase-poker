@@ -20,9 +20,7 @@ export class StorageService {
   }
 
   upload(upload: Upload) {
-    console.log(upload);
     this.uploadTask = this.storageRef.child(upload.path + '/' +  upload.name).put(upload.file);
-    const progress = 0;
 
     this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot: any) =>  {
@@ -38,10 +36,6 @@ export class StorageService {
         this.uploadFinished.next(this.uploadTask.snapshot.downloadURL);
       }
     );
-  }
-
-  getDownLoadurl(id: string) {
-
   }
 
 }

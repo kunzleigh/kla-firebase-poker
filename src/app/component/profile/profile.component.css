@@ -13,3 +13,8 @@
   cursor: inherit;
   display: block;
 }
+
+.user-profile-container {
+  width: 33%;
+  margin-top: 1em;
+}
