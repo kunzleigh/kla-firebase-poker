@@ -32,12 +32,12 @@ exports.ticketStats = functions.https.onRequest((req, res) => {
 
 });
 
-exports.voteSync = functions.database.ref('/users/{$uid}/votes').onWrite(event => {
-  if (event.data.exists() && event.params.exist()) {
+exports.voteSync = functions.database.ref('/users/{$uid}/votes/{$voteId}').onWrite(event => {
+  if (event.data.exists() && event.params && event.params.$uid) {
     const $key = event.data.key;
     const data = event.data.val();
     const $uid = event.params.$uid;
-    data.updateCount = data.updateCount++;
+    data.updateCount = (data.updateCount || 0) + 1;
     if (data.created) {
       data.lastModified = new Date().toISOString();
       data.lastModifiedBy = $uid;
