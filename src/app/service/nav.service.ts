@@ -12,4 +12,8 @@ export class NavService {
     this.router.navigate([path]);
   }
 
+  rawNavigate(options: string[]) {
+    this.router.navigate(options);
+  }
+
 }

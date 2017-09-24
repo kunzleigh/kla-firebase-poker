@@ -3,18 +3,21 @@
     <md-card-title>
       <h1>
         Tickets
-        <md-chip>{{ (ticketService.ticketList$ | async)?.length || 0 }}</md-chip>
+        <md-chip class="custom-chip title-chip">{{ (ticketService.ticketList$ | async)?.length || 0 }}</md-chip>
       </h1>
     </md-card-title>
   </md-card-header>
   <md-card-content>
     <ng-container *ngIf="(ticketService.ticketList$ | async)?.length; else none">
-      <md-card *ngFor="let t of ticketService.ticketList$ | async" class="card-as-row">
-        <span>Title: <strong>{{ t.title }}</strong></span>
-        <span>Description: <strong>{{ t.description }}</strong></span>
-        <md-icon *ngIf="isScrumMasterPresent">star</md-icon>
-        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-        <span class="badge">Votes: <strong>{{ t.votes?.length || 0 }}</strong></span>
+      <md-card *ngFor="let t of ticketService.ticketList$ | async" class="card-as-row" (click)="goVote(t)">
+        <div>
+          <div class="ticket-col-1">{{ t.title }}</div>
+          <div class="ticket-col-2"><md-icon *ngIf="isScrumMasterPresent">star</md-icon></div>
+          <div class="ticket-col-3"><md-chip class="custom-chip">{{ t.votes?.length || 0 }}</md-chip></div>
+        </div>
+        <div>
+          {{ t.description }}
+        </div>
       </md-card>
     </ng-container>
     <ng-template #none>

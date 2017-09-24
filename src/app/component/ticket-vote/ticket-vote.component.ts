@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {TicketService} from '../../service/ticket.service';
 import {NavService} from "../../service/nav.service";
-import {Vote} from "../../class/vote";
 
 @Component({
   selector: 'app-ticket-vote',
@@ -9,9 +8,6 @@ import {Vote} from "../../class/vote";
   styleUrls: ['./ticket-vote.component.css']
 })
 export class TicketVoteComponent {
-
-  ticketId: string;
-  vote: Vote;
 
   constructor(public ticketService: TicketService, public navService: NavService) {
 

@@ -2,7 +2,7 @@
  * Adds common fields to each other data class
  */
 export abstract class Auditable {
-  $id: string;
+  $key: string;
   created: string;
   createdBy: string;
   lastModified: string;

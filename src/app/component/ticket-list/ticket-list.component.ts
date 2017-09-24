@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {TicketService} from '../../service/ticket.service';
 import {NavService} from "../../service/nav.service";
+import {Ticket} from "../../class/ticket";
 
 @Component({
   selector: 'app-ticket-list',
@@ -15,6 +16,10 @@ export class TicketListComponent {
 
   constructor(public ticketService: TicketService, public navService: NavService) {
 
+  }
+
+  goVote(ticket: Ticket) {
+    this.navService.rawNavigate(['/ticket-vote', ticket.$key]);
   }
 
 }

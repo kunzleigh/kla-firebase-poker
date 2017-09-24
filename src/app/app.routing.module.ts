@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './component/home/home.component';
 import {AuthGuardService} from './service/auth-guard.service';
 import {LoginComponent} from './component/login/login.component';
 import {TicketListComponent} from "./component/ticket-list/ticket-list.component";
 import {ProfileComponent} from "./component/profile/profile.component";
 import {TicketCreateComponent} from "./component/ticket-create/ticket-create.component";
+import {TicketVoteComponent} from "./component/ticket-vote/ticket-vote.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
   {path: 'tickets', component: TicketListComponent, canActivate: [AuthGuardService]},
   {path: 'create-ticket', component: TicketCreateComponent, canActivate: [AuthGuardService]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
+  {path: 'ticket-vote/:$ticketId', component: TicketVoteComponent, canActivate: [AuthGuardService]},
   {path: '**', component: HomeComponent, canActivate: [AuthGuardService]}
 ];
 
