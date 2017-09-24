@@ -17,8 +17,6 @@ export class VoteService {
     const vote = new Vote();
     vote.value = 3;
     vote.ticketId = '-KukUtru14ndPcQqXlAN';
-    vote.created = new Date().toISOString();
-    vote.createdBy = this.authService.getUserId();
     this.voteList$.push(vote);
   }
 

@@ -32,11 +32,25 @@ exports.ticketStats = functions.https.onRequest((req, res) => {
 
 });
 
-exports.voteSync = functions.database.ref('/users/{$uid}/votes/{$voteId}').onWrite(event => {
+exports.voteSyncCreate = functions.database.ref('/users/{$uid}/votes/{$voteId}').onCreate(event => {
   if (event.data.exists()) {
     const $key = event.data.key;
     const data = event.data.val();
     const $ticketId = data.ticketId;
+    const $uid = event.params.$uid;
+    data.created = new Date().toISOString();
+    data.createdBy = $uid;
+    return admin.database().ref('/tickets/' + $ticketId + '/votes/' + $key).set(data);
+  }
+});
+exports.voteSyncUpdate = functions.database.ref('/users/{$uid}/votes/{$voteId}').onUpdate(event => {
+  if (event.data.exists()) {
+    const $key = event.data.key;
+    const data = event.data.val();
+    const $ticketId = data.ticketId;
+    const $uid = event.params.$uid;
+    data.lastModified = new Date().toISOString();
+    data.lastModifiedBy = $uid;
     return admin.database().ref('/tickets/' + $ticketId + '/votes/' + $key).set(data);
   }
 });
