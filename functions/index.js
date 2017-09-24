@@ -31,3 +31,36 @@ exports.ticketStats = functions.https.onRequest((req, res) => {
   });
 
 });
+
+exports.voteSync = functions.database.ref('/users/{$uid}/votes').onWrite(event => {
+  if (event.data.exists() && event.params.exist()) {
+    const $key = event.data.key;
+    const data = event.data.val();
+    const $uid = event.params.$uid;
+    data.updateCount = data.updateCount++;
+    if (data.created) {
+      data.lastModified = new Date().toISOString();
+      data.lastModifiedBy = $uid;
+    } else {
+      data.created = new Date().toISOString();
+      data.createdBy = $uid;
+    }
+    return admin.database().ref('/votes/' + $key).set(data);
+  }
+});
+
+exports.ticketSync = functions.database.ref('/users/{$uid}/tickets').onWrite(event => {
+  if (event.data.exists()) {
+    const $key = event.data.key;
+    const data = event.data.val();
+    const $uid = event.params.$uid;
+    if (data.created) {
+      data.lastModified = new Date().toISOString();
+      data.lastModifiedBy = $uid;
+    } else {
+      data.created = new Date().toISOString();
+      data.createdBy = $uid;
+    }
+    return admin.database().ref('/tickets/' + $key).set(data);
+  }
+});
