@@ -32,25 +32,27 @@ exports.ticketStats = functions.https.onRequest((req, res) => {
 
 });
 
-exports.voteSyncCreate = functions.database.ref('/users/{$uid}/votes/{$voteId}').onCreate(event => {
+function syncVote(event, isCreate) {
   if (event.data.exists()) {
+    const $uid = event.params.$uid;
     const $key = event.data.key;
     const data = event.data.val();
     const $ticketId = data.ticketId;
-    const $uid = event.params.$uid;
-    data.created = new Date().toISOString();
-    data.createdBy = $uid;
+
+    if (isCreate) {
+      data.created = new Date().toISOString();
+      data.createdBy = $uid;
+    } else {
+      data.lastModified = new Date().toISOString();
+      data.lastModifiedBy = $uid;
+    }
+
     return admin.database().ref('/tickets/' + $ticketId + '/votes/' + $key).set(data);
   }
+}
+exports.voteSyncCreate = functions.database.ref('/users/{$uid}/votes/{$voteId}').onCreate(event => {
+  return syncVote(event, true);
 });
 exports.voteSyncUpdate = functions.database.ref('/users/{$uid}/votes/{$voteId}').onUpdate(event => {
-  if (event.data.exists()) {
-    const $key = event.data.key;
-    const data = event.data.val();
-    const $ticketId = data.ticketId;
-    const $uid = event.params.$uid;
-    data.lastModified = new Date().toISOString();
-    data.lastModifiedBy = $uid;
-    return admin.database().ref('/tickets/' + $ticketId + '/votes/' + $key).set(data);
-  }
+  return syncVote(event, false);
 });
