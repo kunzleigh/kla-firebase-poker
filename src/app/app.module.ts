@@ -59,7 +59,8 @@ import {LoaderService} from './service/loader.service';
     AuthService,
     UserProfileService,
     StorageService,
-    VoteService
+    VoteService,
+    LoaderService
   ],
   bootstrap: [AppComponent]
 })
