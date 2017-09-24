@@ -23,6 +23,8 @@ import {UserProfileService} from './service/user-profile.service';
 import {StorageService} from './service/storage.service';
 import {TicketVoteComponent} from "./component/ticket-vote/ticket-vote.component";
 import {environment} from '../environments/environment';
+import {LoaderComponent} from './component/loader/loader.component';
+import {LoaderService} from './service/loader.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import {environment} from '../environments/environment';
     TicketCreateComponent,
     TicketListComponent,
     ProfileComponent,
-    TicketVoteComponent
+    TicketVoteComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,7 @@ import {environment} from '../environments/environment';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [TicketService, NavService, AuthService, UserProfileService, StorageService],
+  providers: [TicketService, NavService, AuthService, UserProfileService, StorageService, LoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

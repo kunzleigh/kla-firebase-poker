@@ -3,6 +3,7 @@ import {Upload} from '../../class/upload';
 import {StorageService} from '../../service/storage.service';
 import {UserProfileService} from '../../service/user-profile.service';
 import {User} from '../../class/user';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -16,12 +17,15 @@ export class ProfileComponent implements OnInit {
   private uploadPath = 'user-profile-images';
 
   constructor(private userProfileService: UserProfileService,
+              private route: ActivatedRoute,
               private storageService: StorageService) {}
 
   ngOnInit() {
-    this.user = new User();
     this.initUpload();
-    this.userProfileService.getUserProfile().subscribe(user => this.user = user);
+
+    this.user = new User();
+    // this.userProfileService.getUserProfile().subscribe(user => this.user = user);
+    this.route.snapshot.data['userProfile'].subscribe(user => this.user = user);
     this.storageService.uploadProgress.subscribe(progress => this.progress = progress);
     this.storageService.uploadFinished.subscribe((downloadUrl: string) => {
       this.user.imageUrl = downloadUrl;
