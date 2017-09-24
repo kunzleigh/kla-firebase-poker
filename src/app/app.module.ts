@@ -25,6 +25,8 @@ import {TicketVoteComponent} from "./component/ticket-vote/ticket-vote.component
 import {environment} from '../environments/environment';
 import {FindPipe} from "./pipe/find.pipe";
 import {VoteService} from "./service/vote.service";
+import {LoaderComponent} from './component/loader/loader.component';
+import {LoaderService} from './service/loader.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import {VoteService} from "./service/vote.service";
     ProfileComponent,
     TicketVoteComponent,
     FindPipe
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

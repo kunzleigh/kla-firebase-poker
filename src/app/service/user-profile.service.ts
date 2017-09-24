@@ -3,6 +3,7 @@ import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/databa
 import 'firebase/storage';
 import {User} from '../class/user';
 import {AuthService} from './auth.service';
+import {Resolve} from '@angular/router';
 
 @Injectable()
 export class UserProfileService implements OnInit {

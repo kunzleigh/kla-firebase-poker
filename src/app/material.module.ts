@@ -3,7 +3,7 @@ import {
   MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule, MdExpansionModule, MdFormFieldModule, MdGridListModule,
   MdIconModule,
   MdInputModule, MdListModule,
-  MdProgressBarModule,
+  MdProgressBarModule, MatProgressSpinnerModule,
   MdToolbarModule
 } from '@angular/material';
 
@@ -20,7 +20,8 @@ import {
     MdCheckboxModule,
     MdChipsModule,
     MdListModule,
-    MdGridListModule
+    MdGridListModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MdButtonModule,
@@ -34,7 +35,8 @@ import {
     MdCheckboxModule,
     MdChipsModule,
     MdListModule,
-    MdGridListModule
+    MdGridListModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule {
