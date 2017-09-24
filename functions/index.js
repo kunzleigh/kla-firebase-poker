@@ -37,7 +37,7 @@ exports.voteSync = functions.database.ref('/users/{$uid}/votes/{$voteId}').onWri
     const $key = event.data.key;
     const data = event.data.val();
     const $uid = event.params.$uid;
-    data.updateCount = (data.updateCount || 0) + 1;
+    const $ticketId = data.ticketId;
     if (data.created) {
       data.lastModified = new Date().toISOString();
       data.lastModifiedBy = $uid;
@@ -45,22 +45,6 @@ exports.voteSync = functions.database.ref('/users/{$uid}/votes/{$voteId}').onWri
       data.created = new Date().toISOString();
       data.createdBy = $uid;
     }
-    return admin.database().ref('/votes/' + $key).set(data);
-  }
-});
-
-exports.ticketSync = functions.database.ref('/users/{$uid}/tickets').onWrite(event => {
-  if (event.data.exists()) {
-    const $key = event.data.key;
-    const data = event.data.val();
-    const $uid = event.params.$uid;
-    if (data.created) {
-      data.lastModified = new Date().toISOString();
-      data.lastModifiedBy = $uid;
-    } else {
-      data.created = new Date().toISOString();
-      data.createdBy = $uid;
-    }
-    return admin.database().ref('/tickets/' + $key).set(data);
+    return admin.database().ref('/tickets/' + $ticketId + '/votes/' + $key).set(data);
   }
 });
