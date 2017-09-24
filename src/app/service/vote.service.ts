@@ -16,7 +16,8 @@ export class VoteService {
   addVote() {
     const vote = new Vote();
     vote.value = 3;
-    this.voteList$.set('-KukUtru14ndPcQqXlAN', vote);
+    vote.ticketId = '-KukUtru14ndPcQqXlAN';
+    this.voteList$.push(vote);
   }
 
 }
