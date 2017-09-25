@@ -11,7 +11,14 @@
     <ng-container *ngIf="(ticketService.ticketList$ | async)?.length; else none">
       <md-card *ngFor="let t of ticketService.ticketList$ | async" class="card-as-row" (click)="goVote(t)">
         <div>
-          <div class="ticket-col-1">{{ t.title }}</div>
+          <div class="ticket-col-1">
+            <div>
+              {{ t.title }}
+            </div>
+            <div *ngIf="t.stats">
+              {{ t.stats.avgVote }}, {{ t.stats.minVote }}, {{ t.stats.maxVote }}, {{ t.stats.modeVote }}
+            </div>
+          </div>
           <div class="ticket-col-2"><md-icon *ngIf="isScrumMasterPresent">star</md-icon></div>
           <div class="ticket-col-3"><md-chip class="custom-chip">{{ t.votes?.length || 0 }}</md-chip></div>
         </div>
