@@ -91,14 +91,14 @@ exports.voteStats = functions.database.ref('/tickets/{$ticketId}/votes/{$voteId}
       });
 
       // Count of votes
-      var countVote = keys.length;
-      var sumVote = votes.reduce((a, b) => (a + b));
-      var avgVote = sumVote / countVote;
-      var minVote = Math.min.apply(Math, votes);
-      var maxVote = Math.max.apply(Math, votes);
-      var modeVote = modes(votes).join(',');
+      const countVote = keys.length;
+      const sumVote = votes.reduce((a, b) => (a + b));
+      const avgVote = sumVote / countVote;
+      const minVote = Math.min.apply(Math, votes);
+      const maxVote = Math.max.apply(Math, votes);
+      const modeVote = modes(votes).join(',');
 
-      admin.database().ref('/tickets/' + event.params.$ticketId).update({
+      admin.database().ref('/tickets/' + event.params.$ticketId + '/stats').update({
         avgVote: avgVote,
         countVote: countVote,
         maxVote: maxVote,
