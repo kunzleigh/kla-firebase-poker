@@ -1,5 +1,6 @@
 import {Auditable} from "./auditable";
 import {Vote} from "./vote";
+import {Stats} from "./stats";
 
 /**
  * Used to track tickets in the master list.
@@ -8,10 +9,6 @@ import {Vote} from "./vote";
 export class Ticket extends Auditable {
   title?: string;
   description?: string;
-  countVote: number;
-  minVote: number;
-  maxVote: number;
-  avgVote: number;
-  modeVote: number;
+  stats: Stats;
   votes?: Vote[];
 }
