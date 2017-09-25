@@ -27,6 +27,9 @@ import {FindPipe} from "./pipe/find.pipe";
 import {VoteService} from "./service/vote.service";
 import {LoaderComponent} from './component/loader/loader.component';
 import {LoaderService} from './service/loader.service';
+import {ValueToFibonocciPipe} from "./pipe/valueToFibonocci.pipe";
+import {MinePipe} from "./pipe/mine.pipe";
+import {FirstPipe} from "./pipe/first.pipe";
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import {LoaderService} from './service/loader.service';
     ProfileComponent,
     TicketVoteComponent,
     FindPipe,
-    LoaderComponent
+    LoaderComponent,
+    ValueToFibonocciPipe,
+    MinePipe,
+    FirstPipe
   ],
   imports: [
     BrowserModule,

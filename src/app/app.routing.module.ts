@@ -7,7 +7,8 @@ import {TicketListComponent} from "./component/ticket-list/ticket-list.component
 import {ProfileComponent} from "./component/profile/profile.component";
 import {TicketCreateComponent} from "./component/ticket-create/ticket-create.component";
 import {TicketVoteComponent} from "./component/ticket-vote/ticket-vote.component";
-import {UserProfileResolve} from './service/resolve/user-profile-resolve';
+import {UserProfileResolve} from './resolve/user-profile.resolve';
+import {TicketVoteResolve} from "./resolve/ticket-vote.resolve";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -16,7 +17,7 @@ const appRoutes: Routes = [
   {path: 'tickets', component: TicketListComponent, canActivate: [AuthGuardService]},
   {path: 'create-ticket', component: TicketCreateComponent, canActivate: [AuthGuardService]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService], resolve: {userProfile: UserProfileResolve}},
-  {path: 'ticket-vote/:$ticketId', component: TicketVoteComponent, canActivate: [AuthGuardService]},
+  {path: 'ticket-vote/:$ticketId', component: TicketVoteComponent, canActivate: [AuthGuardService], resolve: {ticketVote: TicketVoteResolve}},
   {path: '**', component: HomeComponent, canActivate: [AuthGuardService]}
 ];
 
@@ -28,7 +29,9 @@ const appRoutes: Routes = [
     RouterModule
   ],
   providers: [
-    AuthGuardService, UserProfileResolve
+    AuthGuardService,
+    UserProfileResolve,
+    TicketVoteResolve
   ]
 })
 export class AppRoutingModule { }
