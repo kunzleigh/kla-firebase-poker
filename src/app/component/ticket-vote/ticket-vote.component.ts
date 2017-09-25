@@ -1,49 +1,44 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TicketService} from '../../service/ticket.service';
 import {NavService} from "../../service/nav.service";
 import {FIBONACCI, Fibonacci} from "../../class/fibonacci";
 import {Ticket} from "../../class/ticket";
-import {ISubscription} from "rxjs/Subscription";
 import {ActivatedRoute} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
+import {Vote} from "../../class/vote";
 
 @Component({
   selector: 'app-ticket-vote',
   templateUrl: './ticket-vote.component.html',
   styleUrls: ['./ticket-vote.component.css']
 })
-export class TicketVoteComponent implements OnInit, OnDestroy {
+export class TicketVoteComponent implements OnInit {
 
   readonly FIBONOCCI = FIBONACCI;
 
   current: Ticket;
-  selected: Fibonacci;
-
-  private _routeSubscription: ISubscription;
+  votes: Vote[] = [];
 
   constructor(public ticketService: TicketService, public navService: NavService, private route: ActivatedRoute, public authService: AuthService) {
 
   }
 
   ngOnInit() {
-    this._routeSubscription = this.route.params.subscribe(params => {
-      const ticketId = params['$ticketId'];
-      this.ticketService.ticketList$.subscribe((tickets: Ticket[]) => {
-        tickets.forEach((ticket) => {
-          if (ticket.$key === ticketId) {
-            this.current = ticket;
-          }
-        });
+    this.current = this.route.snapshot.data['ticketVote'];
+    if (this.current) {
+      let voteKeys = Object.keys(this.current.votes) || [];
+      voteKeys.forEach((it) => {
+        this.votes.push(this.current.votes[it]);
       });
-    });
+    }
   }
 
-  ngOnDestroy() {
-    this._routeSubscription.unsubscribe();
+  getVotes() {
+    return this.votes || [];
   }
 
   selectVote(fibonocci: Fibonacci) {
-    this.selected = fibonocci;
+
   }
 
   saveVote() {
@@ -51,7 +46,7 @@ export class TicketVoteComponent implements OnInit, OnDestroy {
   }
 
   clearVote() {
-    this.selected = null;
+
   }
 
   goToTicketList() {

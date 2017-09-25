@@ -27,7 +27,7 @@
           Place Your Vote
         </md-panel-title>
         <md-panel-description class="header-ratio-2">
-          {{ selected ? (selected?.value + ', ' + selected?.description) : 'No Vote' }}
+          {{ ((getVotes() | mine | first)?.value | fibonocci) || '(No Vote)' }}
         </md-panel-description>
       </md-expansion-panel-header>
       <md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="selectVote(fib)">
@@ -37,7 +37,6 @@
 
   </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" (click)="saveVote()" [disabled]="!title || !description">Save</button>
     <button md-raised-button color="basic" (click)="clearVote()" [disabled]="!title && !description && !more">Clear</button>
     <button md-raised-button color="basic" (click)="goToTicketList()">Cancel</button>
   </md-card-actions>
