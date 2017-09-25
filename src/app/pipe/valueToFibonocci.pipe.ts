@@ -7,7 +7,6 @@ export class ValueToFibonocciPipe implements PipeTransform {
     let found = FIBONACCI.find((it) => {
       return it.value === value;
     });
-    debugger;
     if (found) {
       return found.value + ": " + found.description;
     }
