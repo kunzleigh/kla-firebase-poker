@@ -19,4 +19,18 @@ export class TicketService {
     this.ticketList$.push(ticket);
   }
 
+  getCurrentTicket(ticketId: string): Promise<Ticket> {
+    return new Promise<Ticket>((resolve) => {
+      let returnMe = null;
+      this.ticketList$.subscribe((tickets) => {
+        tickets.forEach((it) => {
+          if (it.$key === ticketId) {
+            returnMe = it;
+          }
+        });
+        resolve(returnMe);
+      });
+    });
+  }
+
 }
