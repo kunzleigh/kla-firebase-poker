@@ -25,7 +25,7 @@ export class TicketVoteComponent implements OnInit {
 
   ngOnInit() {
     this.current = this.route.snapshot.data['ticketVote'];
-    if (this.current) {
+    if (this.current && this.current.votes) {
       let voteKeys = Object.keys(this.current.votes) || [];
       voteKeys.forEach((it) => {
         this.votes.push(this.current.votes[it]);
