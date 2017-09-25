@@ -3,6 +3,7 @@ import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database
 import 'rxjs/add/observable/of';
 import {Vote} from "../class/vote";
 import {AuthService} from "./auth.service";
+import {Fibonacci} from "../class/fibonacci";
 
 @Injectable()
 export class VoteService {
@@ -13,16 +14,23 @@ export class VoteService {
     this.voteList$ = this.angularFireDatabase.list('users/' + this.authService.getUserId() + '/votes');
   }
 
-  addVote() {
+  addVote(fib: Fibonacci, ticketId: string) {
+    debugger;
     const vote = new Vote();
-    vote.value = 3;
-    vote.ticketId = '-KukUtru14ndPcQqXlAN';
+    vote.value = fib.value;
+    vote.ticketId = ticketId;
     this.voteList$.push(vote);
   }
 
   changeVote(vote: Vote, value: number) {
     vote.value = value;
     this.voteList$.update(vote.$key, vote);
+  }
+
+  setVote(fib: Fibonacci, ticketId: string) {
+    let uid = this.authService.getUserId();
+
+
   }
 
 }

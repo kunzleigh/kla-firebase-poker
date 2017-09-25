@@ -6,6 +6,7 @@ import {Ticket} from "../../class/ticket";
 import {ActivatedRoute} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
 import {Vote} from "../../class/vote";
+import {VoteService} from "../../service/vote.service";
 
 @Component({
   selector: 'app-ticket-vote',
@@ -19,7 +20,7 @@ export class TicketVoteComponent implements OnInit {
   current: Ticket;
   votes: Vote[] = [];
 
-  constructor(public ticketService: TicketService, public navService: NavService, private route: ActivatedRoute, public authService: AuthService) {
+  constructor(public ticketService: TicketService, public navService: NavService, private route: ActivatedRoute, public authService: AuthService, private voteService: VoteService) {
 
   }
 
@@ -37,8 +38,13 @@ export class TicketVoteComponent implements OnInit {
     return this.votes || [];
   }
 
-  selectVote(fibonocci: Fibonacci) {
-
+  selectVote(fibonocci: Fibonacci, hasVote: boolean) {
+    debugger;
+    if (hasVote) {
+      this.voteService.setVote(fibonocci, this.current.$key);
+    } else {
+      this.voteService.addVote(fibonocci, this.current.$key)
+    }
   }
 
   saveVote() {

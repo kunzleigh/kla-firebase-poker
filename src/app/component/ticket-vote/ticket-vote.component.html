@@ -30,9 +30,18 @@
           {{ ((getVotes() | mine | first)?.value | fibonocci) || '(No Vote)' }}
         </md-panel-description>
       </md-expansion-panel-header>
-      <md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="selectVote(fib)">
-
-      </md-card>
+      <ng-container *ngIf="(getVotes() | mine)?.length > 0; else noVote">
+        <md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="selectVote(fib, true)">
+          <div class="fib-row-1"><strong>{{ fib.value }}</strong></div>
+          <div class="fib-row-2">{{ fib.description }}</div>
+        </md-card>
+      </ng-container>
+      <ng-template #noVote>
+        <md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="selectVote(fib, false)">
+          <div class="fib-row-1"><strong>{{ fib.value }}</strong></div>
+          <div class="fib-row-2">{{ fib.description }}</div>
+        </md-card>
+      </ng-template>
     </md-expansion-panel>
 
   </md-card-content>

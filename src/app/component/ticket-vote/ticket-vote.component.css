@@ -27,3 +27,13 @@
   display: inline-block;
   width: 75%;
 }
+
+.fib-row-1 {
+  text-align: center;
+  display: inline-block;
+  width: 20%;
+}
+.fib-row-2 {
+  display: inline-block;
+  width: 70%;
+}

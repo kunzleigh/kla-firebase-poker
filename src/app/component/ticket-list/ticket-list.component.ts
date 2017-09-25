@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {TicketService} from '../../service/ticket.service';
 import {NavService} from "../../service/nav.service";
 import {Ticket} from "../../class/ticket";
-import {VoteService} from "../../service/vote.service";
 
 @Component({
   selector: 'app-ticket-list',
@@ -15,16 +14,12 @@ export class TicketListComponent {
   readonly isScrumMaster: boolean = true;
   readonly isScrumMasterPresent: boolean = true;
 
-  constructor(public ticketService: TicketService, public navService: NavService, private voteService: VoteService) {
+  constructor(public ticketService: TicketService, public navService: NavService) {
 
   }
 
   goVote(ticket: Ticket) {
     this.navService.rawNavigate(['/ticket-vote', ticket.$key]);
-  }
-
-  addVote() {
-    this.voteService.addVote();
   }
 
 }
