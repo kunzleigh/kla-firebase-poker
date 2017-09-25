@@ -8,5 +8,10 @@ import {Vote} from "./vote";
 export class Ticket extends Auditable {
   title?: string;
   description?: string;
+  countVote: number;
+  minVote: number;
+  maxVote: number;
+  avgVote: number;
+  modeVote: number;
   votes?: Vote[];
 }
