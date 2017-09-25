@@ -20,4 +20,9 @@ export class VoteService {
     this.voteList$.push(vote);
   }
 
+  changeVote(vote: Vote, value: number) {
+    vote.value = value;
+    this.voteList$.update(vote.$key, vote);
+  }
+
 }
