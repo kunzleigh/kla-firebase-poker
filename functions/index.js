@@ -96,7 +96,7 @@ exports.voteStats = functions.database.ref('/tickets/{$ticketId}/votes/{$voteId}
       var avgVote = sumVote / countVote;
       var minVote = Math.min.apply(Math, votes);
       var maxVote = Math.max.apply(Math, votes);
-      var modeVote = modes(votes);
+      var modeVote = modes(votes).join(',');
 
       admin.database().ref('/tickets/' + event.params.$ticketId).update({
         avgVote: avgVote,
