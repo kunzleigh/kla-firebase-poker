@@ -56,3 +56,56 @@ exports.voteSyncCreate = functions.database.ref('/users/{$uid}/votes/{$voteId}')
 exports.voteSyncUpdate = functions.database.ref('/users/{$uid}/votes/{$voteId}').onUpdate(event => {
   return voteSync(event, false);
 });
+
+function modes(array) {
+  if (!array.length) return [];
+  var modeMap = {},
+    maxCount = 0,
+    modes = [];
+
+  array.forEach(function (val) {
+    if (!modeMap[val]) modeMap[val] = 1;
+    else modeMap[val]++;
+
+    if (modeMap[val] > maxCount) {
+      modes = [val];
+      maxCount = modeMap[val];
+    }
+    else if (modeMap[val] === maxCount) {
+      modes.push(val);
+      maxCount = modeMap[val];
+    }
+  });
+  return modes;
+}
+
+exports.voteStats = functions.database.ref('/tickets/{$ticketId}/votes/{$voteId}').onWrite(event => {
+  if (event.data.exists() && event.params && event.params.$ticketId) {
+
+    admin.database().ref('/tickets/' + event.params.$ticketId + '/votes').once("value").then(function(snapshot) {
+      const collection = snapshot.val();
+
+      const keys = Object.keys(collection);
+      const votes = keys.map((k, i) => {
+        return collection[k]['value'];
+      });
+
+      // Count of votes
+      var countVote = keys.length;
+      var sumVote = votes.reduce((a, b) => (a + b));
+      var avgVote = sumVote / countVote;
+      var minVote = Math.min.apply(Math, votes);
+      var maxVote = Math.max.apply(Math, votes);
+      var modeVote = modes(votes).join(',');
+
+      admin.database().ref('/tickets/' + event.params.$ticketId).update({
+        avgVote: avgVote,
+        countVote: countVote,
+        maxVote: maxVote,
+        minVote: minVote,
+        modeVote: modeVote,
+        sumVote: sumVote,
+      });
+    });
+  }
+});
