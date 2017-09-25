@@ -40,7 +40,7 @@ import {LoaderService} from './service/loader.service';
     TicketListComponent,
     ProfileComponent,
     TicketVoteComponent,
-    FindPipe
+    FindPipe,
     LoaderComponent
   ],
   imports: [
@@ -59,7 +59,8 @@ import {LoaderService} from './service/loader.service';
     AuthService,
     UserProfileService,
     StorageService,
-    VoteService
+    VoteService,
+    LoaderService
   ],
   bootstrap: [AppComponent]
 })
