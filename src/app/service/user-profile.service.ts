@@ -1,18 +1,24 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database';
 import 'firebase/storage';
 import {User} from '../class/user';
 import {AuthService} from './auth.service';
-import {Resolve} from '@angular/router';
+import {AngularFireAuth} from "angularfire2/auth";
 
 @Injectable()
-export class UserProfileService implements OnInit {
+export class UserProfileService {
 
-  constructor(private afDatabase: AngularFireDatabase,
-              private authService: AuthService) {
+  currentUser$: FirebaseObjectObservable<User>;
+
+  constructor(private afDatabase: AngularFireDatabase, private authService: AuthService, private angularFireAuth: AngularFireAuth) {
+    this.getCurrentUser();
+
+    this.angularFireAuth.authState.subscribe((auth) => {
+      if (auth) {
+        this.getCurrentUser();
+      }
+    });
   }
-
-  ngOnInit() {}
 
   saveUserProfile(user: User) {
     this.afDatabase.object('users/' + this.authService.getUserId()).update(user);
@@ -20,6 +26,10 @@ export class UserProfileService implements OnInit {
 
   getUserProfile(): FirebaseObjectObservable<User> {
     return this.afDatabase.object('users/' + this.authService.getUserId());
+  }
+
+  getCurrentUser() {
+    this.currentUser$ = this.afDatabase.object('/users/' + this.authService.getUserId());
   }
 
 }

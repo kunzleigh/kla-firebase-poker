@@ -31,6 +31,6 @@
     </ng-template>
   </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" *ngIf="isScrumMaster" (click)="navService.navigate('/create-ticket')">Create Ticket</button>
+    <button md-raised-button color="primary" *ngIf="(userProfileService.currentUser$ | async) && (userProfileService.currentUser$ | async).isAdmin" (click)="navService.navigate('/create-ticket')">Create Ticket</button>
   </md-card-actions>
 </md-card>
