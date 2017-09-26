@@ -10,19 +10,24 @@ export class UserProfileResolve implements Resolve<any> {
 
   constructor(private userProfileService: UserProfileService, private loaderService: LoaderService) { }
 
+  /**
+   * Resolves the user profile
+   * @param {ActivatedRouteSnapshot} route
+   * @returns {any}
+   */
   resolve(route: ActivatedRouteSnapshot) {
-      this.loaderService.showLoader();
-      return Observable.create(observer => {
-        setTimeout(() => {
-          const userProfile = this.userProfileService.getUserProfile();
+    this.loaderService.showLoader();
+    return Observable.create(observer => {
+      setTimeout(() => {
+        const userProfile = this.userProfileService.getUserProfile();
 
-          userProfile.subscribe(() => {
-            observer.next(userProfile);
-            observer.complete();
-            this.loaderService.hideLoader();
-          });
-        }, loadingDelay);
-      });
+        userProfile.subscribe(() => {
+          observer.next(userProfile);
+          observer.complete();
+          this.loaderService.hideLoader();
+        });
+      }, loadingDelay);
+    });
   }
 
 }

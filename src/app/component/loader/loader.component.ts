@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoaderService} from '../../service/loader.service';
 
 @Component({
@@ -7,10 +7,13 @@ import {LoaderService} from '../../service/loader.service';
   styleUrls: ['./loader.component.css']
 })
 export class LoaderComponent implements OnInit {
+
   private _loaderStateSubscription;
   public showLoader: boolean;
 
-  constructor(private loaderService: LoaderService) { }
+  constructor(private loaderService: LoaderService) {
+
+  }
 
   ngOnInit() {
     this.showLoader = false;

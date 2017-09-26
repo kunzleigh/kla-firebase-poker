@@ -19,6 +19,10 @@ export class StorageService {
     this.uploadFinished = new Subject();
   }
 
+  /**
+   * Uploads the user image to the storage location
+   * @param {Upload} upload
+   */
   upload(upload: Upload) {
     this.uploadTask = this.storageRef.child(upload.path + '/' +  upload.name).put(upload.file);
 

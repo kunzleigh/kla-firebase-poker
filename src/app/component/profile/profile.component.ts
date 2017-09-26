@@ -11,20 +11,19 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
   user: User;
   upload: Upload;
   progress: number;
   private uploadPath = 'user-profile-images';
 
-  constructor(private userProfileService: UserProfileService,
-              private route: ActivatedRoute,
-              private storageService: StorageService) {}
+  constructor(private userProfileService: UserProfileService, private route: ActivatedRoute, private storageService: StorageService) {
+
+  }
 
   ngOnInit() {
     this.initUpload();
-
     this.user = new User();
-    // this.userProfileService.getUserProfile().subscribe(user => this.user = user);
     this.route.snapshot.data['userProfile'].subscribe(user => this.user = user);
     this.storageService.uploadProgress.subscribe(progress => this.progress = progress);
     this.storageService.uploadFinished.subscribe((downloadUrl: string) => {
@@ -34,10 +33,17 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Method triggers when the image upload completes
+   */
   onUploadImage() {
     this.storageService.upload(this.upload);
   }
 
+  /**
+   * Method triggers when an upload file is selected
+   * @param event
+   */
   onFileSelected(event) {
     const files = event.srcElement.files;
     if (files.length > 0) {
@@ -45,6 +51,9 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * Starts the image upload
+   */
   initUpload() {
     this.upload = new Upload();
     this.upload.path = this.uploadPath;

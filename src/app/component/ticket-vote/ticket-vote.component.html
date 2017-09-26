@@ -27,7 +27,7 @@
           Place Your Vote
         </md-panel-title>
         <md-panel-description class="header-ratio-2">
-          {{ ((voteService.currentVote$ | async)?.value | fibonocci) || '(No Vote)' }}
+          {{ ((voteService.currentVote$ | async)?.value | fibonacci) || '(No Vote)' }}
         </md-panel-description>
       </md-expansion-panel-header>
       <md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="ticketService.setUserTicketVote(fib.value)">

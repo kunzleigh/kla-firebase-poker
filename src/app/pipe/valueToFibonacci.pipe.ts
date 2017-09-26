@@ -1,8 +1,14 @@
 import {Pipe, PipeTransform} from "@angular/core";
 import {FIBONACCI} from "../class/fibonacci";
 
-@Pipe({name: 'fibonocci'})
-export class ValueToFibonocciPipe implements PipeTransform {
+@Pipe({name: 'fibonacci'})
+export class ValueToFibonacciPipe implements PipeTransform {
+
+  /**
+   * Returns the Fibonacci value + description
+   * @param {number} value
+   * @returns {any}
+   */
   transform(value: number) {
     let found = FIBONACCI.find((it) => {
       return it.value === value;

@@ -7,8 +7,15 @@ import { loadingDelay } from '../../settings/loading';
 @Injectable()
 export class TicketVoteResolve implements Resolve<boolean> {
 
-  constructor(private ticketService: TicketService, private loaderService: LoaderService) { }
+  constructor(private ticketService: TicketService, private loaderService: LoaderService) {
 
+  }
+
+  /**
+   * Retrieves the data the "page" component needs to work.
+   * @param {ActivatedRouteSnapshot} route
+   * @returns {Promise<boolean>} promise indicating the route should resolve
+   */
   resolve(route: ActivatedRouteSnapshot): Promise<boolean> {
     this.loaderService.showLoader();
     const ticketId = route.paramMap.get('$ticketId');
@@ -20,6 +27,10 @@ export class TicketVoteResolve implements Resolve<boolean> {
     });
   }
 
+  /**
+   * Delay existing to exaggerate the loader.
+   * @returns {Promise<any>}
+   */
   private promiseDelay(): Promise<any> {
     return new Promise(resolve => setTimeout(resolve, loadingDelay));
   }

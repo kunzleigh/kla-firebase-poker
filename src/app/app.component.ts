@@ -10,6 +10,10 @@ import {Router} from "@angular/router";
 })
 export class AppComponent implements OnDestroy {
 
+  /**
+   * Current authentication state subscription
+   * Watches when the subscription changes so the proper zone (~~~think scope~~~) is being used to trigger navigation.
+   */
   private _authStateSubscription: ISubscription;
 
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
@@ -22,6 +26,9 @@ export class AppComponent implements OnDestroy {
     });
   }
 
+  /**
+   * Unsubscribes from the subscription.
+   */
   ngOnDestroy() {
     this._authStateSubscription.unsubscribe();
   }

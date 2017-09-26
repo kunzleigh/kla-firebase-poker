@@ -9,14 +9,25 @@ export class AuthService {
 
   }
 
+  /**
+   * Retrieves the logged in user's display name
+   * @returns {string}
+   */
   getUserName(): string {
     return this.angularFireAuth.auth.currentUser.displayName;
   }
 
+  /**
+   * Retrieves the logged in user's id (uid, $uid)
+   * @returns {string}
+   */
   getUserId(): string {
     return this.angularFireAuth.auth.currentUser.uid;
   }
 
+  /**
+   * Method for specifically logging in with Google
+   */
   loginWithGoogle() {
     const provider = (new auth.GoogleAuthProvider()).setCustomParameters({prompt: 'select_account'});
 
@@ -28,10 +39,17 @@ export class AuthService {
       });
   }
 
+  /**
+   * Complete logout method
+   */
   logout() {
     this.angularFireAuth.auth.signOut();
   }
 
+  /**
+   * Flag method indicating the user is logged in or not
+   * @returns {boolean}
+   */
   isAuthenticated() {
     return this.angularFireAuth.auth.currentUser != null;
   }

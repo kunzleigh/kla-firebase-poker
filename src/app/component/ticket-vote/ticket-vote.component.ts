@@ -12,12 +12,20 @@ import {VoteService} from "../../service/vote.service";
 })
 export class TicketVoteComponent {
 
+  /**
+   * Reference to the Fibonocci constants
+   * TODO: Refactor later to database values
+   * @type {Fibonacci[]}
+   */
   readonly FIBONOCCI = FIBONACCI;
 
   constructor(public ticketService: TicketService, public navService: NavService, public authService: AuthService, public voteService: VoteService) {
 
   }
 
+  /**
+   * Travels to ticket list page
+   */
   goToTicketList() {
     this.navService.navigate('/tickets');
   }

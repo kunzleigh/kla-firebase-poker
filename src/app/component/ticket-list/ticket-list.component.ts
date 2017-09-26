@@ -15,6 +15,10 @@ export class TicketListComponent {
 
   }
 
+  /**
+   * Travels to the ticket vote page
+   * @param {Ticket} ticket the ticket
+   */
   goVote(ticket: Ticket) {
     this.navService.rawNavigate(['/ticket-vote', ticket.$key]);
   }

@@ -17,16 +17,27 @@ export class TicketCreateComponent {
 
   }
 
+  /**
+   * Eradicates data from the form
+   */
   clearForm() {
     this.title = '';
     this.description = '';
     this.more = false;
   }
 
+  /**
+   * Travels to the ticket list page
+   */
   goToTicketList() {
     this.navService.navigate('/tickets');
   }
 
+  /**
+   * Creates the ticket in the DB
+   * If create more is checked, clears the form so another can be created
+   * Else, go to ticket list
+   */
   createTicket() {
     this.ticketService.createTicket(this.title, this.description);
     if (this.more) {

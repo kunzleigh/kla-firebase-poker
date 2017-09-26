@@ -10,10 +10,16 @@ export class LoaderService {
     this.loaderState = new Subject();
   }
 
+  /**
+   * Method shows the global loader
+   */
   showLoader() {
     this.loaderState.next(true);
   }
 
+  /**
+   * Method hides the global loader
+   */
   hideLoader() {
     this.loaderState.next(false);
   }
