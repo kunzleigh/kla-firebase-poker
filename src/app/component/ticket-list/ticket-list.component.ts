@@ -3,6 +3,8 @@ import {TicketService} from '../../service/ticket.service';
 import {NavService} from "../../service/nav.service";
 import {Ticket} from "../../class/ticket";
 import {UserProfileService} from "../../service/user-profile.service";
+import {LoaderService} from '../../service/loader.service';
+import { loadingDelay } from '../../../settings/loading';
 
 @Component({
   selector: 'app-ticket-list',
@@ -11,8 +13,14 @@ import {UserProfileService} from "../../service/user-profile.service";
 })
 export class TicketListComponent {
 
-  constructor(public ticketService: TicketService, public navService: NavService, public userProfileService: UserProfileService) {
-
+  constructor(public ticketService: TicketService,
+              public navService: NavService,
+              public userProfileService: UserProfileService,
+              private loaderService: LoaderService) {
+    this.loaderService.showLoader();
+    setTimeout(() => {
+      this.loaderService.hideLoader();
+    }, loadingDelay);
   }
 
   /**
