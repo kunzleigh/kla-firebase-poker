@@ -1,0 +1,34 @@
+<md-card class="page-card">
+  <md-card-header>
+    <md-card-title>
+      <h1>{{user.name}}</h1>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <div>
+      <img src="{{user.imageUrl}}" width="200" height="200" class="md-card-image" alt="user profile image">
+    </div>
+    <div class="user-profile-container">
+      Upload Profile Image
+    </div>
+    <div>
+      <md-form-field>
+        <input mdInput placeholder="Image Name" [(ngModel)]="upload.name">
+      </md-form-field>
+    </div>
+  </md-card-content>
+  <md-card-actions>
+    <div>
+      <button md-raised-button color="basic">
+        <input type="file" class="hide" (change)="onFileSelected($event)">
+        Browse...
+      </button>
+      <button md-raised-button color="primary" (click)="onUploadImage()" [disabled]="!upload.file || !upload.name">
+        Save Image
+      </button>
+    </div>
+    <div *ngIf="progress > 0" class="user-profile-container">
+      <md-progress-bar mode="determinate" [value]="progress"></md-progress-bar>
+    </div>
+  </md-card-actions>
+</md-card>

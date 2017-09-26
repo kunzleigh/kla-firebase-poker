@@ -1,0 +1,24 @@
+<md-toolbar color="primary">
+  <svg width="300" height="50" viewBox="0 0 300 50">
+    <!-- Symbol -->
+    <symbol id="s-text">
+      <text text-anchor="start" x="0" y="40">KLA Poker</text>
+    </symbol>
+    <!-- Duplicate symbols -->
+    <use xlink:href="#s-text" class="text"></use>
+    <use xlink:href="#s-text" class="text"></use>
+    <use xlink:href="#s-text" class="text"></use>
+    <use xlink:href="#s-text" class="text"></use>
+    <use xlink:href="#s-text" class="text"></use>
+  </svg>
+  <!--<span>KLA Planning Poker</span>-->
+  <span class="header-spacer"></span>
+  <a md-button color="basic" routerLink="/login" *ngIf="!authService.isAuthenticated()">Login</a>
+  <a md-button color="basic" routerLink="/login" *ngIf="authService.isAuthenticated()">Logout</a>
+
+  <md-toolbar-row>
+    <a md-button routerLink="/home">Home</a>
+    <a md-button routerLink="/tickets">Tickets</a>
+    <a md-button routerLink="/profile">Profile</a>
+  </md-toolbar-row>
+</md-toolbar>

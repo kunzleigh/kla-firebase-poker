@@ -1,27 +1,51 @@
-# KlaFirebasePoker
+# KlaScrumPoker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
+This project was created using the Angular cli and Firebase cli
 
-## Development server
+## To run you will need
+* Node, we used 7.10, but any up to date version should work fine. https://nodejs.org/en/
+* npm, comes with Node, no installation needed. 
+* Angular cli (command line tools) `npm install -g @angular/cli`
+* Firebase cli `npm install -g firebase-tools`
+* git, our instructions will include using the command line, 
+  but feel free to use your favorite git GUI client. https://git-scm.com/downloads
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Next set up the firebase project
+* https://console.firebase.google.com/
+* **Add project** > **Create project**
+* Name it whatever you want, the project id will be created for you based on the name, but you can edit it if you like
 
-## Code scaffolding
+## Set up the project locally
+* Clone the repository `git clone https://github.com/kunzleigh/kla-firebase-poker.git`
+* From the project directory install node_modules `cd kla-firebase-poker | npm install`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Configure firebase for your project
+* From your firebase console overview page, click **Add Firebase to your web app**
+* Copy the contents of the config var and paste it into the firebase const in **src/configs/firebase.ts** 
+* Update git to not track the changes to this file 
+  `git update-index --assume-unchanged src/configs/firebase.ts`
+  we do this so that you are not accidentally exposing your apps security information.
 
-## Build
+## Set up google authentication for your app
+* From the firebase console overview, **authentication** > **sign-in method** > **google** > **enable** > **save**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Now you can build and run the app!
+* From the project directory `ng serve`
+* Point your favorite browser to localhost:4200 
 
-## Running unit tests
+## Set up firebase via cli
+* From the project directory `fireabse login` > login with your google account as prompted
+* `firebase init` > when prompted, select Database, Functions and Hosting using arrow keys and the spacebar
+* Select your project as the default project when prompted. 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### A series of prompts will come up
+* File for Database Rules? database.rules.json
+* Any prompt that asks you to overwrite a file: No
+* Do you want to install npm dependencies? Yes
+* What do you want to use as your public directory? dist 
+(this is the folder that will be deployed to the hosting server)
+* Configure as a single-page app (...)? Yes
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Set firebase cli to use this project and deploy to hosting server
+* From the project directory `firebase use`
+* `firebase deploy` > this will give you a hosting URL where your app is located

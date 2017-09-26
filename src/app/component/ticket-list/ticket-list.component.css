@@ -1,0 +1,35 @@
+.custom-chip {
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.title-chip {
+  font-size: 20px;
+}
+
+.card-as-row {
+  cursor: pointer;
+  margin: 5px;
+}
+
+.card-as-row:hover {
+  box-shadow: rgba(63, 81, 181, 1) 0 0 15px;
+}
+
+.ticket-col-1 {
+  display: inline-block;
+  width: 70%;
+}
+
+.ticket-col-2 {
+  text-align: right;
+  display: inline-block;
+  width: calc(15% - 5px);
+}
+
+.ticket-col-3 {
+  text-align: right;
+  display: inline-block;
+  width: calc(15% - 5px);
+}

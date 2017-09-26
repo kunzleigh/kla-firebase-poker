@@ -1,0 +1,46 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "users": {
+      "$userId": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid == $userId",
+        "votes": {
+          "$voteId": {
+            ".validate": "newData.hasChild('ticketId') && newData.child('ticketId').isString() && newData.hasChild('value') && newData.child('value').isNumber()"
+          }
+        },
+        "tickets": {
+          "$ticketId": {
+
+          }
+        }
+      }
+    },
+    "rooms": {
+      //TODO: Rooms functionality, build rooms/projects to encase tickets.
+    },
+    "tickets": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$ticketId": {
+        //TODO: function to pair votes with tickets
+        "votes": {
+          "$voteId": {
+
+          }
+        }
+      }
+    },
+    "admins": {
+      "$adminId": {
+        ".read": "auth != null",
+        //TODO: only manual entry for now.
+        ".write": false,
+        "$uid": {".validate": "newData.isString()"}
+      }
+    }
+  }
+}

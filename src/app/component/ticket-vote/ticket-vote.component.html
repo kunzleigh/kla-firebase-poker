@@ -1,0 +1,46 @@
+<md-card class="page-card">
+  <md-card-header>
+    <md-card-title>
+      <h1>Vote!</h1>
+    </md-card-title>
+  </md-card-header>
+  <md-card-content>
+
+    <md-expansion-panel expanded="true">
+      <md-expansion-panel-header class="mat-expanded">
+        <md-panel-title class="header-ratio-1">
+          Title
+        </md-panel-title>
+        <md-panel-description class="header-ratio-2">
+          Description
+        </md-panel-description>
+      </md-expansion-panel-header>
+
+      <div class="header-ratio-1 inline-div">{{ (ticketService.currentTicket$ | async)?.title }}</div>
+      <div class="header-ratio-2 inline-div">{{ (ticketService.currentTicket$ | async)?.description }}</div>
+
+    </md-expansion-panel>
+
+    <md-expansion-panel expanded="true">
+      <md-expansion-panel-header>
+        <md-panel-title class="header-ratio-1">
+          Place Your Vote
+        </md-panel-title>
+        <md-panel-description class="header-ratio-2">
+          {{ ((voteService.currentVote$ | async)?.value | fibonacci) || '(No Vote)' }}
+        </md-panel-description>
+      </md-expansion-panel-header>
+      <md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="ticketService.setUserTicketVote(fib.value)">
+        <div class="fib-row-1"><strong>{{ fib.value }}</strong></div>
+        <div class="fib-row-2">{{ fib.description }}</div>
+      </md-card>
+    </md-expansion-panel>
+
+  </md-card-content>
+  <md-card-actions>
+    <button md-raised-button color="basic" (click)="ticketService.clearUserTicketVote()"
+            [disabled]="!((voteService.currentVote$ | async)?.value >= 0)">Clear
+    </button>
+    <button md-raised-button color="basic" (click)="goToTicketList()">Cancel</button>
+  </md-card-actions>
+</md-card>

@@ -1,10 +1,10 @@
-import { AppPage } from './app.po';
+import { KlaScrumPokerPage } from './app.po';
 
-describe('kla-firebase-poker App', () => {
-  let page: AppPage;
+describe('kla-scrum-poker App', () => {
+  let page: KlaScrumPokerPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new KlaScrumPokerPage();
   });
 
   it('should display welcome message', () => {
