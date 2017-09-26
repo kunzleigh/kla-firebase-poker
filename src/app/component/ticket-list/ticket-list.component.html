@@ -16,10 +16,10 @@
               {{ t.title }}
             </div>
             <div *ngIf="t.stats">
-              {{ t.stats.avgVote }}, {{ t.stats.minVote }}, {{ t.stats.maxVote }}, {{ t.stats.modeVote }}
+              {{ t.stats?.avgVote }}, {{ t.stats?.minVote }}, {{ t.stats?.maxVote }}, {{ t.stats?.modeVote }}
             </div>
           </div>
-          <div class="ticket-col-3"><md-chip class="custom-chip">{{ t.stats.countVote || 0 }}</md-chip></div>
+          <div class="ticket-col-3"><md-chip class="custom-chip">{{ t.stats?.countVote || 0 }}</md-chip></div>
         </div>
         <div>
           {{ t.description }}
