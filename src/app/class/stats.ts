@@ -4,4 +4,5 @@ export class Stats {
   maxVote: number;
   avgVote: number;
   modeVote: number;
+  countVote: number;
 }

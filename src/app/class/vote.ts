@@ -7,4 +7,5 @@ import {Auditable} from "./auditable";
 export class Vote extends Auditable {
   value: number;
   ticketId: string;
+  uid: string;
 }
