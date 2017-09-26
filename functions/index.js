@@ -35,7 +35,6 @@ exports.ticketStats = functions.https.onRequest((req, res) => {
 function voteSync(event, isCreate) {
   if (event.data.exists()) {
     const $uid = event.params.$uid;
-    const $key = event.data.key;
     const data = event.data.val();
     const $ticketId = data.ticketId;
 
@@ -47,7 +46,7 @@ function voteSync(event, isCreate) {
       data.lastModifiedBy = $uid;
     }
 
-    return admin.database().ref('/tickets/' + $ticketId + '/votes/' + $key).set(data);
+    return admin.database().ref('/tickets/' + $ticketId + '/votes/' + $uid).set(data);
   }
 }
 exports.voteSyncCreate = functions.database.ref('/users/{$uid}/votes/{$voteId}').onCreate(event => {
@@ -59,7 +58,7 @@ exports.voteSyncUpdate = functions.database.ref('/users/{$uid}/votes/{$voteId}')
 
 function modes(array) {
   if (!array.length) return [];
-  var modeMap = {},
+  let modeMap = {},
     maxCount = 0,
     modes = [];
 
