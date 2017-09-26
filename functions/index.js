@@ -10,6 +10,7 @@ exports.setupNewUser = functions.auth.user().onCreate(event => {
     name: user.displayName,
     created: new Date().toISOString(),
     createdBy: user.uid,
+    isAdmin: user.email.split('@')[1] === 'kunzleigh.com',
     imageUrl: "https://firebasestorage.googleapis.com/v0/b/kla-scrum-poker.appspot.com/o/user-profile-images%2Fno-image.png?alt=media&token=663c6ead-4d9d-4e78-8233-0c4e8da22636"
   });
 });
