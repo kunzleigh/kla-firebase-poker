@@ -5,8 +5,8 @@ This project was created using the Angular cli and Firebase cli
 ## To run you will need
 * Node, we used 7.10, but any up to date version should work fine. https://nodejs.org/en/
 * npm, comes with Node, no installation needed. 
-* angular cli (command line tools) `npm install -g @angular/cli`
-* firebase cli `npm install -g firebase-tools`
+* Angular cli (command line tools) `npm install -g @angular/cli`
+* Firebase cli `npm install -g firebase-tools`
 * git, our instructions will include using the command line, 
   but feel free to use your favorite git GUI client. https://git-scm.com/downloads
 
