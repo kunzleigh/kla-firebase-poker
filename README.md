@@ -34,7 +34,7 @@ This project was created using the Angular cli and Firebase cli
 * Point your favorite browser to localhost:4200 
 
 ## Set up firebase via cli
-* From the project directory `fireabse login` > login with your google account as prompted
+* From the project directory `firebase login` > login with your google account as prompted
 * `firebase init` > when prompted, select Database, Functions and Hosting using arrow keys and the spacebar
 * Select your project as the default project when prompted. 
 
