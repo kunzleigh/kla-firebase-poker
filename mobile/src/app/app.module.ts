@@ -10,12 +10,11 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-// angular fire
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {TicketService} from './service/ticket.service';
-import {AuthService} from './service/auth.service';
+import {AuthService} from '../../../web/src/app/service/auth.service';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',

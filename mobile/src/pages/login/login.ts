@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AuthService} from '../../app/service/auth.service';
+import {AuthService} from '../../../../web/src/app/service/auth.service';
 
 /**
  * Generated class for the LoginPage page.
@@ -16,7 +16,9 @@ import {AuthService} from '../../app/service/auth.service';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public authService: AuthService) {
   }
 
   ionViewDidLoad() {
