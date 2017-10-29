@@ -3,13 +3,13 @@
     <md-card-title>
       <h1>
         Tickets
-        <md-chip class="custom-chip title-chip">{{ (ticketService.ticketList$ | async)?.length || 0 }}</md-chip>
+        <md-chip class="custom-chip title-chip">{{ (tickets | async)?.length || 0 }}</md-chip>
       </h1>
     </md-card-title>
   </md-card-header>
   <md-card-content>
-    <ng-container *ngIf="(ticketService.ticketList$ | async)?.length; else none">
-      <md-card *ngFor="let t of ticketService.ticketList$ | async" class="card-as-row" (click)="goVote(t)">
+    <ng-container *ngIf="(tickets | async)?.length; else none">
+      <md-card *ngFor="let t of tickets | async" class="card-as-row" (click)="goVote(t)">
         <div>
           <div class="ticket-col-1">
             <div>
@@ -31,6 +31,6 @@
     </ng-template>
   </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" *ngIf="(userProfileService.currentUser$ | async) && (userProfileService.currentUser$ | async).isAdmin" (click)="navService.navigate('/create-ticket')">Create Ticket</button>
+    <button md-raised-button color="primary" *ngIf="(user | async) && (user | async)?.isAdmin" (click)="navService.navigate('/create-ticket')">Create Ticket</button>
   </md-card-actions>
 </md-card>

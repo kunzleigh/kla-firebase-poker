@@ -5,6 +5,8 @@ import {Ticket} from "../../class/ticket";
 import {UserProfileService} from "../../service/user-profile.service";
 import {LoaderService} from '../../service/loader.service';
 import { loadingDelay } from '../../../settings/loading';
+import {Observable} from 'rxjs/Observable';
+import {User} from '../../class/user';
 
 @Component({
   selector: 'app-ticket-list',
@@ -12,11 +14,16 @@ import { loadingDelay } from '../../../settings/loading';
   styleUrls: ['./ticket-list.component.css']
 })
 export class TicketListComponent {
+  tickets: Observable<Ticket[]>;
+  user: Observable<User>;
 
   constructor(public ticketService: TicketService,
               public navService: NavService,
               public userProfileService: UserProfileService,
               private loaderService: LoaderService) {
+    this.tickets = ticketService.ticketList$.valueChanges();
+    this.user = this.userProfileService.currentUser$.valueChanges();
+
     this.loaderService.showLoader();
     setTimeout(() => {
       this.loaderService.hideLoader();
