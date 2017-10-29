@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {TicketService} from '../../app/service/ticket.service';
 import {Observable} from 'rxjs/Observable';
+import {TicketService} from '../../../../web/src/app/service/ticket.service';
+import {Ticket} from '../../../../web/src/app/class/ticket';
 
 @Component({
   selector: 'page-list',
@@ -8,7 +9,7 @@ import {Observable} from 'rxjs/Observable';
 })
 export class ListPage {
 
-  tickets: Observable<any[]>;
+  tickets: Observable<Ticket[]>;
 
   constructor(public ticketService: TicketService) {
     this.tickets = ticketService.ticketList$.valueChanges();

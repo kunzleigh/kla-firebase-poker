@@ -13,8 +13,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import {TicketService} from './service/ticket.service';
 import {AuthService} from '../../../web/src/app/service/auth.service';
+import {TicketService} from '../../../web/src/app/service/ticket.service';
+import {VoteService} from '../../../web/src/app/service/vote.service';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
@@ -51,6 +52,7 @@ const firebaseConfig = {
     SplashScreen,
     AuthService,
     TicketService,
+    VoteService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

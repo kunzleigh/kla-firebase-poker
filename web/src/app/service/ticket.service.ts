@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from "angularfire2/database";
+import {AngularFireDatabase, AngularFireList, AngularFireObject} from "angularfire2/database";
 import 'rxjs/add/observable/of';
 import {Ticket} from "../class/ticket";
 import {VoteService} from "./vote.service";
@@ -9,10 +9,12 @@ import {AuthService} from "./auth.service";
 @Injectable()
 export class TicketService {
 
-  ticketList$: FirebaseListObservable<Ticket[]>;
-  currentTicket$: FirebaseObjectObservable<Ticket>;
+  ticketList$: AngularFireList<Ticket[]>;
+  currentTicket$: AngularFireObject<Ticket>;
 
-  constructor(private angularFireDatabase: AngularFireDatabase, private voteService: VoteService, private authService: AuthService) {
+  constructor(private angularFireDatabase: AngularFireDatabase,
+              private voteService: VoteService,
+              private authService: AuthService) {
     this.ticketList$ = this.angularFireDatabase.list('/tickets');
   }
 
@@ -33,7 +35,10 @@ export class TicketService {
   }
 
   setUserTicketVote(fibValue: number) {
-    let subscription = this.currentTicket$.subscribe((it) => {
+    let subscription = this.currentTicket$.snapshotChanges().map(action => {
+      const $key = action.payload.key;
+      return { $key, ...action.payload.val() };
+    }).subscribe((it) => {
       const vote = new Vote();
       vote.value = fibValue;
       vote.ticketId = it.$key;
@@ -44,7 +49,10 @@ export class TicketService {
   }
 
   clearUserTicketVote() {
-    let subscription = this.currentTicket$.subscribe((it) => {
+    let subscription = this.currentTicket$.snapshotChanges().map(action => {
+      const $key = action.payload.key;
+      return { $key, ...action.payload.val() };
+    }).subscribe((it) => {
       this.angularFireDatabase.list('/users/' + this.authService.getUserId() + '/votes').remove(it.$key).then(() => {
         subscription.unsubscribe();
       });
