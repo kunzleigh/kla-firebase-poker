@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFireDatabase, FirebaseObjectObservable} from "angularfire2/database";
+import {AngularFireDatabase, AngularFireObject} from "angularfire2/database";
 import 'rxjs/add/observable/of';
 import {Vote} from "../class/vote";
 import {AuthService} from "./auth.service";
@@ -10,7 +10,7 @@ export class VoteService {
   /**
    * Tracks the "current vote" to be the current user's vote on the ticket they are viewing
    */
-  currentVote$: FirebaseObjectObservable<Vote>;
+  currentVote$: AngularFireObject<Vote>;
 
   constructor(private angularFireDatabase: AngularFireDatabase, private authService: AuthService) {
 

@@ -19,7 +19,7 @@ export class UserProfileResolve implements Resolve<any> {
     this.loaderService.showLoader();
     return Observable.create(observer => {
       setTimeout(() => {
-        const userProfile = this.userProfileService.getUserProfile();
+        const userProfile = this.userProfileService.getUserProfile().valueChanges();
 
         userProfile.subscribe(() => {
           observer.next(userProfile);

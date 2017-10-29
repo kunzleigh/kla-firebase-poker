@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database';
+import {AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
 import 'firebase/storage';
 import {User} from '../class/user';
 import {AuthService} from './auth.service';
@@ -11,7 +11,7 @@ export class UserProfileService {
   /**
    * Current user observable
    */
-  currentUser$: FirebaseObjectObservable<User>;
+  currentUser$: AngularFireObject<User>;
 
   constructor(private afDatabase: AngularFireDatabase, private authService: AuthService, private angularFireAuth: AngularFireAuth) {
     this.getCurrentUser();
@@ -35,7 +35,7 @@ export class UserProfileService {
    * Returns the user profile
    * @returns {FirebaseObjectObservable<User>}
    */
-  getUserProfile(): FirebaseObjectObservable<User> {
+  getUserProfile(): AngularFireObject<User> {
     return this.afDatabase.object('users/' + this.authService.getUserId());
   }
 

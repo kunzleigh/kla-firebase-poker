@@ -9,7 +9,7 @@ import {AuthService} from "./auth.service";
 @Injectable()
 export class TicketService {
 
-  ticketList$: AngularFireList<Ticket[]>;
+  ticketList$: AngularFireList<Ticket>;
   currentTicket$: AngularFireObject<Ticket>;
 
   constructor(private angularFireDatabase: AngularFireDatabase,
