@@ -17,16 +17,16 @@ export class UserProfileResolve implements Resolve<any> {
    */
   resolve(route: ActivatedRouteSnapshot) {
     this.loaderService.showLoader();
-    return Observable.create(observer => {
-      setTimeout(() => {
-        const userProfile = this.userProfileService.getUserProfile().valueChanges();
+    const userProfile = this.userProfileService.getUserProfile();
 
-        userProfile.subscribe(() => {
+    return Observable.create((observer) => {
+      userProfile.valueChanges().subscribe(() => {
+        setTimeout(() => {
           observer.next(userProfile);
           observer.complete();
           this.loaderService.hideLoader();
-        });
-      }, loadingDelay);
+        }, loadingDelay);
+      })
     });
   }
 

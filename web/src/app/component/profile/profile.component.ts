@@ -17,14 +17,19 @@ export class ProfileComponent implements OnInit {
   progress: number;
   private uploadPath = 'user-profile-images';
 
-  constructor(private userProfileService: UserProfileService, private route: ActivatedRoute, private storageService: StorageService) {
+  constructor(private userProfileService: UserProfileService,
+              private route: ActivatedRoute,
+              private storageService: StorageService) {
 
   }
 
   ngOnInit() {
     this.initUpload();
     this.user = new User();
-    this.route.snapshot.data['userProfile'].subscribe(user => this.user = user);
+    this.route.snapshot.data['userProfile'].valueChanges().subscribe(user => {
+        console.log(user);
+        this.user = user;
+    });
     this.storageService.uploadProgress.subscribe(progress => this.progress = progress);
     this.storageService.uploadFinished.subscribe((downloadUrl: string) => {
       this.user.imageUrl = downloadUrl;
