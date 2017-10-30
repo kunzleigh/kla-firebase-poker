@@ -5,6 +5,10 @@
 .card-as-row:hover {
   box-shadow: rgba(63,81,181,1) 0 0 15px;
 }
+.selected {
+  background: rgba(63,81,181,1);
+  color: white;
+}
 .header-ratio-1 {
   width: 30% !important;
   flex: none;

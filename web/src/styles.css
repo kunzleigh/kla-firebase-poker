@@ -1,13 +1,13 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-body {
-  margin: 0 !important;
-  background: url('./assets/images/firebaseloader.gif') no-repeat center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+/*body {*/
+  /*margin: 0 !important;*/
+  /*background: url('./assets/images/firebaseloader.gif') no-repeat center fixed;*/
+  /*-webkit-background-size: cover;*/
+  /*-moz-background-size: cover;*/
+  /*-o-background-size: cover;*/
+  /*background-size: cover;*/
+/*}*/
 
 .header-spacer {
   flex: 1 1 auto;

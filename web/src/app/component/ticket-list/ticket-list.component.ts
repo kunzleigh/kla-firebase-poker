@@ -21,7 +21,12 @@ export class TicketListComponent {
               public navService: NavService,
               public userProfileService: UserProfileService,
               private loaderService: LoaderService) {
-    this.tickets = ticketService.ticketList$.valueChanges();
+    this.tickets = ticketService.ticketList$.snapshotChanges().map(action => {
+      return action.map(action => {
+        const $key = action.payload.key;
+        return {$key, ...action.payload.val()};
+      });
+    });
     this.user = this.userProfileService.currentUser$.valueChanges();
 
     this.loaderService.showLoader();

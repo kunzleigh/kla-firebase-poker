@@ -11,34 +11,42 @@
         <md-panel-title class="header-ratio-1">
           Title
         </md-panel-title>
-        <md-panel-description class="header-ratio-2">
+        <md-panel-title class="header-ratio-2">
           Description
-        </md-panel-description>
+        </md-panel-title>
       </md-expansion-panel-header>
 
-      <div class="header-ratio-1 inline-div">{{ (ticketService.currentTicket$ | async)?.title }}</div>
-      <div class="header-ratio-2 inline-div">{{ (ticketService.currentTicket$ | async)?.description }}</div>
+      <div class="header-ratio-1 inline-div">{{ (currentTicket | async)?.title }}</div>
+      <div class="header-ratio-2 inline-div">{{ (currentTicket | async)?.description }}</div>
 
     </md-expansion-panel>
 
     <md-expansion-panel expanded="true">
       <md-expansion-panel-header>
         <md-panel-title class="header-ratio-1">
-          Place Your Vote
+          Your Vote
         </md-panel-title>
         <md-panel-description class="header-ratio-2">
-          {{ ((voteService.currentVote$ | async)?.value | fibonacci) || '(No Vote)' }}
+          {{ ((currentVote | async)?.value | fibonacci) || '(No Vote)' }}
         </md-panel-description>
       </md-expansion-panel-header>
-      <md-card *ngFor="let fib of FIBONOCCI" class="card-as-row" (click)="ticketService.setUserTicketVote(fib.value)">
-        <div class="fib-row-1"><strong>{{ fib.value }}</strong></div>
-        <div class="fib-row-2">{{ fib.description }}</div>
-      </md-card>
+      <div *ngFor="let fib of FIBONOCCI">
+        <md-card
+          [class.selected]="fib.value == (currentVote | async)?.value"
+          class="card-as-row" (click)="ticketService.setUserTicketVote(fib.value)">
+          <div class="fib-row-1"><strong>{{ fib.value }}</strong></div>
+          <div class="fib-row-2">{{ fib.description }}</div>
+        </md-card>
+      </div>
     </md-expansion-panel>
 
   </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="basic" (click)="ticketService.clearUserTicketVote()" [disabled]="!((voteService.currentVote$ | async)?.value >= 0)">Clear</button>
-    <button md-raised-button color="basic" (click)="goToTicketList()">Cancel</button>
+    <button md-raised-button color="primary" (click)="goToTicketList()">
+      Done
+    </button>
+    <button md-raised-button color="basic"
+            (click)="ticketService.clearUserTicketVote()"
+            [disabled]="!((currentVote | async)?.value >= 0)">Clear</button>
   </md-card-actions>
 </md-card>
