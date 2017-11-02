@@ -16,15 +16,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AuthService} from '../../../web/src/app/service/auth.service';
 import {TicketService} from '../../../web/src/app/service/ticket.service';
 import {VoteService} from '../../../web/src/app/service/vote.service';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyDkMxqhRj9-Xr9-vqQiFYxfIAqttbk-B3I',
-  authDomain: 'kla-scrum-poker.firebaseapp.com',
-  databaseURL: 'https://kla-scrum-poker.firebaseio.com',
-  projectId: 'kla-scrum-poker',
-  storageBucket: 'kla-scrum-poker.appspot.com',
-  messagingSenderId: '735057512980'
-};
+import {firebase} from '../../../shared/configs/firebase';
 
 @NgModule({
   declarations: [
@@ -36,7 +28,7 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],

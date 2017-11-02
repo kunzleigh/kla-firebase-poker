@@ -44,5 +44,4 @@ yarn-error.log
 Thumbs.db
 
 # Configs
-/src/configs/*.ts
 .firebaserc
