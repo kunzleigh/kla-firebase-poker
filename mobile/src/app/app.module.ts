@@ -17,13 +17,17 @@ import {AuthService} from '../../../web/src/app/service/auth.service';
 import {TicketService} from '../../../web/src/app/service/ticket.service';
 import {VoteService} from '../../../web/src/app/service/vote.service';
 import {firebase} from '../../../shared/configs/firebase';
+import {ProfilePage} from '../pages/profile/profile';
+import {UserProfileService} from '../../../web/src/app/service/user-profile.service';
+import {StorageService} from '../../../web/src/app/service/storage.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
-    ListPage
+    ListPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import {firebase} from '../../../shared/configs/firebase';
     MyApp,
     HomePage,
     LoginPage,
-    ListPage
+    ListPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
@@ -45,6 +50,8 @@ import {firebase} from '../../../shared/configs/firebase';
     AuthService,
     TicketService,
     VoteService,
+    UserProfileService,
+    StorageService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
