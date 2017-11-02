@@ -53,6 +53,7 @@ export class ProfileComponent implements OnInit {
     const files = event.srcElement.files;
     if (files.length > 0) {
       this.upload.file = files[0];
+      this.upload.name = this.upload.file.name.split('.')[0];
     }
   }
 

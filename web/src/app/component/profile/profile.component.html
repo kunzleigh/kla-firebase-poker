@@ -19,11 +19,11 @@
   </md-card-content>
   <md-card-actions>
     <div>
-      <button md-raised-button color="basic">
+      <button md-raised-button color="basic" class="margin-right">
         <input type="file" class="hide" (change)="onFileSelected($event)">
         Browse...
       </button>
-      <button md-raised-button color="primary" (click)="onUploadImage()" [disabled]="!upload.file || !upload.name">
+      <button *ngIf="upload.file" md-raised-button color="primary" (click)="onUploadImage()" [disabled]="!upload.file || !upload.name">
         Save Image
       </button>
     </div>
