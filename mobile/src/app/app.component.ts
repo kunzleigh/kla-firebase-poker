@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import {AuthService} from '../../../web/src/app/service/auth.service';
+import {ProfilePage} from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +28,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage, authState: null },
-      { title: 'User Profile', component: HomePage, authState: true },
+      { title: 'User Profile', component: ProfilePage, authState: true },
       { title: 'List', component: ListPage, authState: true },
       { title: 'Login', component: LoginPage, authState: false },
       { title: 'Logout', component: HomePage, authState: true },
