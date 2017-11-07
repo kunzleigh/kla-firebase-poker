@@ -1,18 +1,47 @@
-<!--
-  Generated template for the TicketVotePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>ticket-vote</ion-title>
+    <ion-title>Vote!</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
+  <ion-card>
+    <ion-card-content>
+      <ion-title class="header-ratio-1">
+        Title
+      </ion-title>
+      <ion-title class="header-ratio-2">
+        Description
+      </ion-title>
+      <div>
+        <div class="header-ratio-1 inline-div">{{ (currentTicket | async)?.title }}</div>
+        <div class="header-ratio-2 inline-div">{{ (currentTicket | async)?.description }}</div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Your Vote {{ ((currentVote | async)?.value | fibonacci) || '(No Vote)' }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let fib of FIBONOCCI">
+        <ion-card
+          [class.selected]="fib.value == (currentVote | async)?.value"
+          class="card-as-row" (click)="ticketService.setUserTicketVote(fib.value)">
+          <div class="fib-row-1"><strong>{{ fib.value }}</strong></div>
+          <div class="fib-row-2">{{ fib.description }}</div>
+        </ion-card>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-buttons>
+    <button ion-button color="default" (click)="goToTicketList()">
+      Done
+    </button>
+    <button ion-button color="light"
+            (click)="ticketService.clearUserTicketVote()"
+            [disabled]="!((currentVote | async)?.value >= 0)">Clear</button>
+  </ion-buttons>
 </ion-content>

@@ -1,4 +1,11 @@
-<ion-content>
+<ion-header>
+  <ion-navbar>
+    <ion-title>Tickets</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
   <ion-card *ngFor="let t of tickets | async" (click)="goVote(t)">
     <ion-card-header>{{t.title}}</ion-card-header>
     <ion-card-content>

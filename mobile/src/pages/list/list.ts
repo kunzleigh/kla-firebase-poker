@@ -27,8 +27,7 @@ export class ListPage {
 
   goVote(t: Ticket) {
     // set current ticket and navigate to the vote page
-    this.voteService.getCurrentVote(t.$key);
-    this.navCtrl.push(TicketVotePage);
+    this.ticketService.getCurrentTicket(t.$key).then(() => this.navCtrl.push(TicketVotePage));
   }
 
 }
