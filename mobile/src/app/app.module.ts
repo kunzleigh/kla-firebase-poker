@@ -20,6 +20,7 @@ import {firebase} from '../../../shared/configs/firebase';
 import {ProfilePage} from '../pages/profile/profile';
 import {UserProfileService} from '../../../web/src/app/service/user-profile.service';
 import {StorageService} from '../../../web/src/app/service/storage.service';
+import {TicketVotePage} from '../pages/ticket-vote/ticket-vote';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {StorageService} from '../../../web/src/app/service/storage.service';
     HomePage,
     LoginPage,
     ListPage,
-    ProfilePage
+    ProfilePage,
+    TicketVotePage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import {StorageService} from '../../../web/src/app/service/storage.service';
     HomePage,
     LoginPage,
     ListPage,
-    ProfilePage
+    ProfilePage,
+    TicketVotePage
   ],
   providers: [
     StatusBar,

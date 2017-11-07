@@ -31,9 +31,7 @@ export class MyApp {
       { title: 'User Profile', component: ProfilePage, authState: true },
       { title: 'List', component: ListPage, authState: true },
       { title: 'Login', component: LoginPage, authState: false },
-      { title: 'Logout', component: HomePage, authState: true },
-
-
+      { title: 'Logout', component: HomePage, authState: true }
     ];
   }
 
