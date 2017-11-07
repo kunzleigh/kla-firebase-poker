@@ -4,25 +4,7 @@
   </ion-card-header>
   <ion-card-content>
     <div>
-      <img src="{{user.imageUrl}}" width="200" height="200" class="ion-card-image" alt="user profile image">
-    </div>
-    <div class="user-profile-container">
-      Upload Profile Image
-    </div>
-    <div>
-      <ion-item>
-        <ion-label stacked>Image Name</ion-label>
-        <ion-input [(ngModel)]="upload.name"></ion-input>
-      </ion-item>
-    </div>
-    <div>
-      <button ion-button color="light" class="margin-right">
-        <input type="file" class="hide" (change)="onFileSelected($event)">
-        Browse...
-      </button>
-      <button *ngIf="upload.file" ion-button color="default" (click)="onUploadImage()" [disabled]="!upload.file || !upload.name">
-        Save Image
-      </button>
+      <img src="{{user.imageUrl}}" class="profile-img" alt="user profile image">
     </div>
   </ion-card-content>
 </ion-card>

@@ -9,7 +9,7 @@ import {Ticket} from '../../../../web/src/app/class/ticket';
 })
 export class ListPage {
 
-  tickets: Observable<any[]>;
+  tickets: Observable<Ticket[]>;
 
   constructor(public ticketService: TicketService) {
     this.tickets = ticketService.ticketList$.valueChanges();
