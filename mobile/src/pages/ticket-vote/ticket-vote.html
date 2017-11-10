@@ -10,12 +10,16 @@
       <ion-title>
         {{ (currentTicket | async)?.title }}
       </ion-title>
-      <ion-title>
+      <div padding>
         {{ (currentTicket | async)?.description }}
-      </ion-title>
+      </div>
+      <hr/>
       <ion-title>
-        Your Vote {{ ((currentVote | async)?.value | fibonacci) || '(No Vote)' }}
+        Your Vote
       </ion-title>
+      <div padding>
+        {{ ((currentVote | async)?.value | fibonacci) || '(No Vote)' }}
+      </div>
     </ion-card-content>
   </ion-card>
 

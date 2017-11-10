@@ -28,8 +28,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage, authState: null },
-      { title: 'User Profile', component: ProfilePage, authState: true },
       { title: 'List', component: ListPage, authState: true },
+      { title: 'User Profile', component: ProfilePage, authState: true },
       { title: 'Login', component: LoginPage, authState: false },
       { title: 'Logout', component: HomePage, authState: true }
     ];
