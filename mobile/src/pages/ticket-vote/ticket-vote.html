@@ -7,35 +7,24 @@
 <ion-content padding>
   <ion-card>
     <ion-card-content>
-      <ion-title class="header-ratio-1">
-        Title
+      <ion-title>
+        {{ (currentTicket | async)?.title }}
       </ion-title>
-      <ion-title class="header-ratio-2">
-        Description
+      <ion-title>
+        {{ (currentTicket | async)?.description }}
       </ion-title>
-      <div>
-        <div class="header-ratio-1 inline-div">{{ (currentTicket | async)?.title }}</div>
-        <div class="header-ratio-2 inline-div">{{ (currentTicket | async)?.description }}</div>
-      </div>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>
+      <ion-title>
         Your Vote {{ ((currentVote | async)?.value | fibonacci) || '(No Vote)' }}
-      </ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <div *ngFor="let fib of FIBONOCCI">
-        <ion-card
-          [class.selected]="fib.value == (currentVote | async)?.value"
-          class="card-as-row" (click)="ticketService.setUserTicketVote(fib.value)">
-          <div class="fib-row-1"><strong>{{ fib.value }}</strong></div>
-          <div class="fib-row-2">{{ fib.description }}</div>
-        </ion-card>
-      </div>
+      </ion-title>
     </ion-card-content>
   </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let fib of FIBONOCCI">
+      <ion-label><strong>{{ fib.value }}</strong> {{ fib.description }}</ion-label>
+      <ion-checkbox checked="{{ (currentVote | async)?.value === fib.value }}" (click)="ticketService.setUserTicketVote(fib.value)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
   <ion-buttons>
     <button ion-button color="default" (click)="goToTicketList()">
       Done

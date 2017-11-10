@@ -22,6 +22,7 @@ import {UserProfileService} from '../../../web/src/app/service/user-profile.serv
 import {StorageService} from '../../../web/src/app/service/storage.service';
 import {TicketVotePage} from '../pages/ticket-vote/ticket-vote';
 import {ValueToFibonacciPipe} from '../../../web/src/app/pipe/valueToFibonacci.pipe';
+import {TicketCreatePage} from '../pages/ticket-create/ticket-create';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {ValueToFibonacciPipe} from '../../../web/src/app/pipe/valueToFibonacci.p
     ListPage,
     ProfilePage,
     TicketVotePage,
+    TicketCreatePage,
     ValueToFibonacciPipe
   ],
   imports: [
@@ -47,7 +49,8 @@ import {ValueToFibonacciPipe} from '../../../web/src/app/pipe/valueToFibonacci.p
     LoginPage,
     ListPage,
     ProfilePage,
-    TicketVotePage
+    TicketVotePage,
+    TicketCreatePage
   ],
   providers: [
     StatusBar,

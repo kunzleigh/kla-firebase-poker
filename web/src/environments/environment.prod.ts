@@ -1,4 +1,4 @@
-import {firebase} from '../configs/firebase.prod';
+import {firebase} from '../../../shared/configs/firebase.prod';
 
 export const environment = {
   production: true,
