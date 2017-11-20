@@ -2,7 +2,7 @@
 
 This project was created using the Angular cli, Ionic cli and Firebase cli
 
-# Angular Web App (project director = /web)
+# Angular Web App (project directory = /web)
 
 ## To run you will need
 * Node, we used 7.10, but any up to date version should work fine. https://nodejs.org/en/
