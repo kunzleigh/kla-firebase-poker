@@ -19,38 +19,39 @@ This project was created using the Angular cli, Ionic cli and Firebase cli
 
 ## Set up the project locally
 * Clone the repository `git clone https://github.com/kunzleigh/kla-scrum-poker.git`
-* From the project directory install node_modules `cd kla-scrum-poker | npm install`
+* From the project directory install node_modules `cd kla-scrum-poker/web | npm install`
 
 ## Configure firebase for your project
 * From your firebase console overview page, click **Add Firebase to your web app**
-* Copy the contents of the config var and paste it into the firebase const in **src/configs/firebase.ts** 
+* Copy the contents of the config var and paste it into the firebase const in **shared/configs/firebase.ts** 
 * Update git to not track the changes to this file 
   `git update-index --assume-unchanged src/configs/firebase.ts`
-  we do this so that you are not accidentally exposing your apps security information.
+  we do this so that you are not accidentally exposing your apps security information
 
 ## Set up google authentication for your app
-* From the firebase console overview, **authentication** > **sign-in method** > **google** > **enable** > **save**
-
-## Now you can build and run the app!
-* From the project directory `ng serve`
-* Point your favorite browser to localhost:4200 
+* From the firebase console overview, **DEVELOP** > **authentication** > **sign-in method** > **google** > **enable** > **save**
 
 ## Set up firebase via cli
 * From the project directory `fireabse login` > login with your google account as prompted
-* `firebase init` > when prompted, select Database, Functions and Hosting using arrow keys and the spacebar
+* `firebase init` > when prompted, select Database, Functions, Hosting and Storage using arrow keys and the spacebar
 * Select your project as the default project when prompted. 
 
 ### A series of prompts will come up
-* File for Database Rules? database.rules.json
+* Cheat sheet: [enter], n, n, n, y, dist, y, [enter]
+* More specifically:
+* File for Database Rules? database.rules.json (just hit enter for the default)
 * Any prompt that asks you to overwrite a file: No
 * Do you want to install npm dependencies? Yes
 * What do you want to use as your public directory? dist 
 (this is the folder that will be deployed to the hosting server)
 * Configure as a single-page app (...)? Yes
+* File for Storage Rules? storage.rules (just hit enter for the default)
+* ^ Note if you find that you are having trouble uploading a picture in your app you may have to remove `if request.auth!=null`     from storage.rules. This is not ideal, and we will hope to have an updated fix for this soon!
 
 ## Set firebase cli to use this project and deploy to hosting server
 * From the project directory `firebase use`
-* `firebase deploy` > this will give you a hosting URL where your app is located
+* `ng build | firebase deploy` > this will give you a hosting URL where your app is located
+* If your deploy does not work correctly in any way, make sure that you selected the dist directory as the public directory in the   cli setup step, if you did not set the value in firebase.json `hosting: { public: "dist" ...}`. This tells firebase what to       deploy to the hosting server, for angular this is the dist folder! If you do not have a dist directory, run `ng build` in the     project directory.
 
 # Ionic mobile app (project directory = /mobile)
 
@@ -58,6 +59,6 @@ This project was created using the Angular cli, Ionic cli and Firebase cli
 * Ionic cli and cordova `npm install -g cordova ionic`
 
 ## Build and run the app!
-* From the project directory run `npm install` followed by `ionic serve` to serve the app to http://localhost:8100
+* From the project directory run `npm install | ionic serve` to install dependencies and serve the app to http://localhost:8100
 
 ## (Coming soon) Link to Ionic Pro for mobile deploys.
