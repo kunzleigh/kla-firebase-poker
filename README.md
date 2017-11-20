@@ -1,6 +1,8 @@
 # KlaScrumPoker
 
-This project was created using the Angular cli and Firebase cli
+This project was created using the Angular cli, Ionic cli and Firebase cli
+
+# Angular Web App (project director = /web)
 
 ## To run you will need
 * Node, we used 7.10, but any up to date version should work fine. https://nodejs.org/en/
@@ -49,3 +51,13 @@ This project was created using the Angular cli and Firebase cli
 ## Set firebase cli to use this project and deploy to hosting server
 * From the project directory `firebase use`
 * `firebase deploy` > this will give you a hosting URL where your app is located
+
+# Ionic mobile app (project directory = /mobile)
+
+## To run you will need
+* Ionic cli and cordova `npm install -g cordova ionic`
+
+## Build and run the app!
+* From the project directory run `npm install` followed by `ionic serve` to serve the app to http://localhost:8100
+
+## (Coming soon) Link to Ionic Pro for mobile deploys.
