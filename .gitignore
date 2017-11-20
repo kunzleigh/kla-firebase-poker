@@ -62,3 +62,5 @@ UserInterfaceState.xcuserstate
 # Configs
 **/.firebaserc
 shared/configs/
+
+mobile/package-lock\.json

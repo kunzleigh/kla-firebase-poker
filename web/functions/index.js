@@ -109,3 +109,44 @@ exports.voteStats = functions.database.ref('/tickets/{$ticketId}/votes/{$voteId}
     });
   }
 });
+
+exports.resizePhoto = functions.storage.object().onChange(event => {
+    const object = event.data;
+
+  const fileBucket = object.bucket; // The Storage bucket that contains the file.
+  const filePath = object.name; // File path in the bucket.
+  const contentType = object.contentType; // File content type.
+  const resourceState = object.resourceState; // The resourceState is 'exists' or 'not_exists' (for file/folder deletions).
+  const metageneration = object.metageneration; // Number of times metadata has been generated. New objects have a value
+  
+  // Exit if this is triggered on a file that is not an image.
+  if (!contentType.startWith('image/')) {
+    return;
+  }
+  
+  // Exit if this is a move or deletion event.
+  if (resourceState === 'not_exists') {
+    return;
+  }
+  
+  // Exit if file exists but is not new and is only being triggered
+  // because of a metadata change.
+  if (resourceState === 'exists' && metageneration > 1) {
+    return;
+  }
+  
+  // Download file from bucket.
+  const bucket = gcs.bucket(fileBucket);
+  const tempFilePath = path.join(os.tmpdir(), fileName);
+  return bucket.file(filePath).download({
+      destination: tempFilePath
+    }).then(() => {
+      // Generate a thumbnail using ImageMagick.
+      return spawn('convert', [tempFilePath, '-thumbnail', '200x200>', tempFilePath]);
+  }).then(() => {
+    // Uploading the thumbnail overwriting the original file.
+    return bucket.upload(tempFilePath, {destination: filePath});
+  // Once the thumbnail has been uploaded delete the local file to free up disk space.
+  }).then(() => fs.unlinkSync(tempFilePath));
+
+});
