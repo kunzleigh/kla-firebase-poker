@@ -1,0 +1,19 @@
+<ion-content padding>
+  <button ion-button (click)="createTicket()">Create Ticket</button>
+  <ion-card *ngFor="let t of tickets | async" (click)="goVote(t)">
+    <ion-card-header>{{t.title}}</ion-card-header>
+    <ion-card-content>
+      <div *ngIf="t.stats">
+        <div>
+          {{ t.stats?.avgVote }} | {{ t.stats?.minVote }} | {{ t.stats?.maxVote }} | {{ t.stats?.modeVote }}
+        </div>
+        <div>
+          {{ t.stats?.countVote || 0 }}
+        </div>
+      </div>
+      <div>
+        {{ t.description }}
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

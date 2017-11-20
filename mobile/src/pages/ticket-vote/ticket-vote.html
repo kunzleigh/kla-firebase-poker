@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Vote!</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <ion-title>
+        {{ (currentTicket | async)?.title }}
+      </ion-title>
+      <div padding>
+        {{ (currentTicket | async)?.description }}
+      </div>
+      <hr/>
+      <ion-title>
+        Your Vote
+      </ion-title>
+      <div padding>
+        {{ ((currentVote | async)?.value | fibonacci) || '(No Vote)' }}
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let fib of FIBONOCCI">
+      <ion-label><strong>{{ fib.value }}</strong> {{ fib.description }}</ion-label>
+      <ion-checkbox checked="{{ (currentVote | async)?.value === fib.value }}" (click)="ticketService.setUserTicketVote(fib.value)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-buttons>
+    <button ion-button color="default" (click)="goToTicketList()">
+      Done
+    </button>
+    <button ion-button color="light"
+            (click)="ticketService.clearUserTicketVote()"
+            [disabled]="!((currentVote | async)?.value >= 0)">Clear</button>
+  </ion-buttons>
+</ion-content>
