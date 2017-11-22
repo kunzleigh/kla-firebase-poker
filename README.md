@@ -2,6 +2,8 @@
 
 This project was created using the Angular cli, Ionic cli and Firebase cli
 
+Go here to check out our presentation https://docs.google.com/presentation/d/1HEZjWivdL5ZgXuX-pKKu0PORoqRkbS4mWRkc_tWJ3OM/edit#slide=id.g2b0bfeec64_0_3
+
 # Angular Web App (project directory = /web)
 
 ## To run you will need
